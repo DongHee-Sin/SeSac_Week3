@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="akA-lQ-LJw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7f4-8H-YOI">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--집중 모드-->
         <scene sceneID="HOf-8S-49k">
             <objects>
                 <tableViewController id="MRE-Zg-cXG" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="rYg-Hw-bcQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="rYg-Hw-bcQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -173,12 +173,13 @@
                             <outlet property="delegate" destination="MRE-Zg-cXG" id="uu5-QH-uUC"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="집중 모드" id="s5r-ds-8Fy"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7OA-M8-AjI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="104" y="167"/>
+            <point key="canvasLocation" x="1013.0434782608696" y="166.74107142857142"/>
         </scene>
-        <!--Kakao Setting Table View Controller-->
+        <!--설정-->
         <scene sceneID="bJn-Fw-IBr">
             <objects>
                 <tableViewController storyboardIdentifier="KakaoSettingTableViewController" id="akA-lQ-LJw" customClass="KakaoSettingTableViewController" customModule="SeSac3TrendMedia" customModuleProvider="target" sceneMemberID="viewController">
@@ -209,10 +210,47 @@
                             <outlet property="delegate" destination="akA-lQ-LJw" id="6lS-mF-PI7"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="설정" id="EOR-EO-DcA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qys-kF-P6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="167"/>
+            <point key="canvasLocation" x="2642" y="167"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3Qj-Q7-Rxe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7f4-8H-YOI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lgN-vj-ZQH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MRE-Zg-cXG" kind="relationship" relationship="rootViewController" id="Xl9-3s-Gap"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tsR-nO-oWW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="102.89855072463769" y="166.74107142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TQ9-Yq-6gg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D6F-Tx-i4b" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UFc-eh-Wo2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="akA-lQ-LJw" kind="relationship" relationship="rootViewController" id="RGa-Kp-GKT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LfO-EL-QyO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1949" y="167"/>
         </scene>
     </scenes>
     <resources>
