@@ -10,13 +10,8 @@ import UIKit
 class KakaoSettingTableViewController: UITableViewController {
 
     // MARK: - Propertys
-    let sectionTitle: [String] = ["전체 설정", "개인 설정", "기타"]
     
-    let settingInfo: [[String]] = [
-        ["공지사항", "실험실", "버전 정보"],
-        ["개인/보안", "알림", "채팅", "멀티프로필"],
-        ["고객센터/도움말"]
-    ]
+    let settingDataManager = KakaoSettingDataManager()
     
     
     
@@ -31,12 +26,12 @@ class KakaoSettingTableViewController: UITableViewController {
 
     // 섹션의 개수
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return settingInfo.count
+        return settingDataManager.getSectionCount()
     }
 
     // 섹션별 셀의 개수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingInfo[section].count
+        return settingDataManager.getSectionCellCount(at: section)
     }
 
     // 사용할 Cell
@@ -45,13 +40,14 @@ class KakaoSettingTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        cell.textLabel?.text = settingInfo[indexPath.section][indexPath.row]
+        cell.textLabel?.text = settingDataManager.getSectionCellTitle(sectionIndex: indexPath.section, cellIndex: indexPath.row)
 
         return cell
     }
     
     // Header의 Title 설정
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitle[section]
+        return settingDataManager.getSectionTitle(at: section)
     }
+    
 }

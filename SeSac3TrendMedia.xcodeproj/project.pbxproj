@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D01E938F288549B50030FAD9 /* KakaoSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E938E288549B50030FAD9 /* KakaoSettingModel.swift */; };
 		D08A29042885342F00F65886 /* KakaoSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A29032885342F00F65886 /* KakaoSettingTableViewController.swift */; };
 		D0DA44D52884DDED00D12714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA44D42884DDED00D12714 /* AppDelegate.swift */; };
 		D0DA44D72884DDED00D12714 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA44D62884DDED00D12714 /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D01E938E288549B50030FAD9 /* KakaoSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoSettingModel.swift; sourceTree = "<group>"; };
 		D08A29032885342F00F65886 /* KakaoSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoSettingTableViewController.swift; sourceTree = "<group>"; };
 		D0DA44D12884DDED00D12714 /* SeSac3TrendMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSac3TrendMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DA44D42884DDED00D12714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				D0DA44EC28850FCE00D12714 /* Setting.storyboard */,
 				D0DA44EA2884FE3C00D12714 /* SettingTableViewController.swift */,
 				D08A29032885342F00F65886 /* KakaoSettingTableViewController.swift */,
+				D01E938E288549B50030FAD9 /* KakaoSettingModel.swift */,
 				D0DA44DD2884DDEE00D12714 /* Assets.xcassets */,
 				D0DA44DF2884DDEE00D12714 /* LaunchScreen.storyboard */,
 				D0DA44E22884DDEE00D12714 /* Info.plist */,
@@ -164,6 +167,7 @@
 				D08A29042885342F00F65886 /* KakaoSettingTableViewController.swift in Sources */,
 				D0DA44D92884DDED00D12714 /* ViewController.swift in Sources */,
 				D0DA44D52884DDED00D12714 /* AppDelegate.swift in Sources */,
+				D01E938F288549B50030FAD9 /* KakaoSettingModel.swift in Sources */,
 				D0DA44D72884DDED00D12714 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
