@@ -9,9 +9,9 @@ import Foundation
 
 
 struct ShoppingMemo {
-    private var title: String
-    private var isSelected: Bool = false
-    private var isImportant: Bool = false
+    private(set) var title: String
+    private(set) var isSelected: Bool = false
+    private(set) var isImportant: Bool = false
     
     init(title: String) {
         self.title = title
@@ -47,6 +47,11 @@ struct ShoppingListModel {
     
     func getListCount() -> Int {
         return shoppingList.count
+    }
+    
+    
+    func getMemo(at index: Int) -> ShoppingMemo{
+        return shoppingList[index]
     }
     
     

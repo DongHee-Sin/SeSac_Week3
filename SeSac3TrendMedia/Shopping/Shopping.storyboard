@@ -44,13 +44,48 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ay7-mN-rPo">
-                                <rect key="frame" x="0.0" y="157.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingTableViewCell" rowHeight="56" id="ay7-mN-rPo" customClass="ShoppingTableViewCell" customModule="SeSac3TrendMedia" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="157.5" width="414" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ay7-mN-rPo" id="wW3-jn-rIJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21x-Ea-i60">
+                                            <rect key="frame" x="20" y="15" width="30" height="26"/>
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojm-6y-m1z">
+                                            <rect key="frame" x="70" y="15" width="37.5" height="26"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXp-nA-vg0">
+                                            <rect key="frame" x="364" y="15" width="30" height="21"/>
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="21x-Ea-i60" firstAttribute="leading" secondItem="wW3-jn-rIJ" secondAttribute="leading" constant="20" id="9HB-U4-nhl"/>
+                                        <constraint firstItem="Ojm-6y-m1z" firstAttribute="leading" secondItem="21x-Ea-i60" secondAttribute="trailing" constant="20" id="AGQ-H2-tAl"/>
+                                        <constraint firstAttribute="bottom" secondItem="HXp-nA-vg0" secondAttribute="bottom" constant="20" id="Ng1-k4-60p"/>
+                                        <constraint firstItem="21x-Ea-i60" firstAttribute="top" secondItem="wW3-jn-rIJ" secondAttribute="top" constant="15" id="OcA-kb-QY6"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ojm-6y-m1z" secondAttribute="bottom" constant="15" id="RKk-qk-hMP"/>
+                                        <constraint firstItem="Ojm-6y-m1z" firstAttribute="top" secondItem="wW3-jn-rIJ" secondAttribute="top" constant="15" id="cP3-hs-2qH"/>
+                                        <constraint firstItem="HXp-nA-vg0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ojm-6y-m1z" secondAttribute="trailing" constant="20" id="dPf-g6-8Ux"/>
+                                        <constraint firstItem="HXp-nA-vg0" firstAttribute="top" secondItem="wW3-jn-rIJ" secondAttribute="top" constant="15" id="hEe-nk-6wq"/>
+                                        <constraint firstAttribute="trailing" secondItem="HXp-nA-vg0" secondAttribute="trailing" constant="20" id="rCI-di-R1E"/>
+                                        <constraint firstAttribute="bottom" secondItem="21x-Ea-i60" secondAttribute="bottom" constant="15" id="xQC-EF-gGq"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="checkMarkButton" destination="21x-Ea-i60" id="F02-WS-WxI"/>
+                                    <outlet property="starButton" destination="HXp-nA-vg0" id="9Dp-gc-Coo"/>
+                                    <outlet property="titleLabel" destination="Ojm-6y-m1z" id="F9j-Ot-Tm0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

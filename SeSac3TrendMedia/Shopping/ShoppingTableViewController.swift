@@ -9,6 +9,11 @@ import UIKit
 
 class ShoppingTableViewController: UITableViewController {
     
+    // MARK: - Propertys
+    var shoppingModel = ShoppingListModel()
+    
+    
+    
     // MARK: - Outlet
     @IBOutlet weak var searchTextField: UITextField!
     
@@ -36,11 +41,19 @@ class ShoppingTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return shoppingModel.getListCount()
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell", for: indexPath) as! ShoppingTableViewCell
+        
+        let data = shoppingModel.getMemo(at: indexPath.row)
+        
+        cell.titleLabel.text = data.title
+        cell.checkMarkButton.setImage(data.isSelected ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
+        cell.starButton.setImage(data.isImportant ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
+        
+        return cell
     }
 }
