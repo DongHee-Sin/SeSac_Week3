@@ -32,7 +32,7 @@ struct ShoppingMemo {
 
 
 
-struct ShoppingListModel {
+struct ShoppingListManager {
     private var shoppingList: [ShoppingMemo]
     
     init() {

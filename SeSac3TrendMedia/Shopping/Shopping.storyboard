@@ -15,23 +15,29 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="WVu-7E-9fu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="i2e-ce-sbj">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="i2e-ce-sbj" userLabel="Header">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfd-mS-IXO">
-                                    <rect key="frame" x="20" y="10" width="374" height="93"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfd-mS-IXO" userLabel="UIView">
+                                    <rect key="frame" x="20" y="10" width="374" height="71"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place Holder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4QQ-fd-1GO">
-                                            <rect key="frame" x="15" y="10" width="110.5" height="73"/>
+                                            <rect key="frame" x="15" y="10" width="110.5" height="51"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="shoppingTextFieldReturn:" destination="zfu-v7-eIL" eventType="editingDidEndOnExit" id="HBL-DD-KS5"/>
+                                            </connections>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKF-Id-ppy">
-                                            <rect key="frame" x="310.5" y="20" width="48.5" height="53"/>
+                                            <rect key="frame" x="310.5" y="20" width="48.5" height="31"/>
                                             <color key="tintColor" systemColor="labelColor"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="gray" title="추가"/>
+                                            <connections>
+                                                <action selector="addButtonDidTapped:" destination="zfu-v7-eIL" eventType="touchUpInside" id="Edq-ke-e7M"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -55,7 +61,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingTableViewCell" rowHeight="56" id="ay7-mN-rPo" customClass="ShoppingTableViewCell" customModule="SeSac3TrendMedia" customModuleProvider="target">
-                                <rect key="frame" x="20" y="162.5" width="374" height="56"/>
+                                <rect key="frame" x="20" y="140.5" width="374" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ay7-mN-rPo" id="wW3-jn-rIJ">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
@@ -106,7 +112,7 @@
                     <navigationItem key="navigationItem" title="쇼핑" id="vbn-QA-1ta"/>
                     <connections>
                         <outlet property="headerView" destination="Zfd-mS-IXO" id="Mfy-FP-WGM"/>
-                        <outlet property="searchTextField" destination="4QQ-fd-1GO" id="Ezu-Zu-M8r"/>
+                        <outlet property="shoppingTextField" destination="4QQ-fd-1GO" id="Ezu-Zu-M8r"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJ6-7X-Aev" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
