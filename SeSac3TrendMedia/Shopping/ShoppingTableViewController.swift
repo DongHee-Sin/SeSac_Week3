@@ -17,6 +17,8 @@ class ShoppingTableViewController: UITableViewController {
     // MARK: - Outlet
     @IBOutlet weak var searchTextField: UITextField!
     
+    @IBOutlet weak var headerView: UIView!
+    
     
     
     // MARK: - View Did Load
@@ -32,11 +34,15 @@ class ShoppingTableViewController: UITableViewController {
     func initialSetting() {
         searchTextField.placeholder = "무엇을 구매하실 건가요?"
         searchTextField.borderStyle = .none
+        
+        tableView.keyboardDismissMode = .onDrag
+        
+        headerView.layer.cornerRadius = headerView.frame.height / 7
     }
     
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 10
     }
     
     
@@ -50,6 +56,7 @@ class ShoppingTableViewController: UITableViewController {
         
         let data = shoppingModel.getMemo(at: indexPath.row)
         
+        cell.selectionStyle = .none
         cell.titleLabel.text = data.title
         cell.checkMarkButton.setImage(data.isSelected ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
         cell.starButton.setImage(data.isImportant ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
