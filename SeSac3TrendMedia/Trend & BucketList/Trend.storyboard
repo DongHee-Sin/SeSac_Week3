@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJG-am-n1l">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Trend View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="TrendViewController" id="Y6W-OH-hqX" customClass="TrendViewController" customModule="SeSac3TrendMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SQt-nc-yjq">
+                                <rect key="frame" x="20" y="64" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="k5S-ge-NCM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SQt-nc-yjq" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="YfQ-yD-1AB"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="SQt-nc-yjq" secondAttribute="trailing" constant="20" id="gds-cF-eAq"/>
+                            <constraint firstItem="SQt-nc-yjq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="jje-rp-hs3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchTextField" destination="SQt-nc-yjq" id="cuR-V3-MOR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="129"/>
+        </scene>
+        <!--Bucket List Table View Controller-->
+        <scene sceneID="4un-iu-BCG">
+            <objects>
+                <tableViewController storyboardIdentifier="BucketListTableViewController" id="IJG-am-n1l" customClass="BucketListTableViewController" customModule="SeSac3TrendMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="fLq-Re-fAi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="1bL-LX-1ND" userLabel="Header">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1dS-JY-PZp">
+                                    <rect key="frame" x="20" y="20" width="374" height="65"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="userTextFieldReturn:" destination="IJG-am-n1l" eventType="editingDidEndOnExit" id="mzS-Ei-i7i"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="1dS-JY-PZp" secondAttribute="trailing" constant="20" id="Hdw-SJ-xSO"/>
+                                <constraint firstAttribute="bottom" secondItem="1dS-JY-PZp" secondAttribute="bottom" constant="20" id="Tap-4U-6zo"/>
+                                <constraint firstItem="1dS-JY-PZp" firstAttribute="leading" secondItem="1bL-LX-1ND" secondAttribute="leading" constant="20" id="aCE-gZ-bTK"/>
+                                <constraint firstItem="1dS-JY-PZp" firstAttribute="top" secondItem="1bL-LX-1ND" secondAttribute="top" constant="20" id="sbx-ab-kfI"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BucketListTableViewCell" rowHeight="155" id="1kf-Zh-OYx" customClass="BucketListTableViewCell" customModule="SeSac3TrendMedia" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="149.5" width="414" height="155"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1kf-Zh-OYx" id="orK-M7-FCd">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="155"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1p-De-rF8">
+                                            <rect key="frame" x="20" y="55.5" width="44" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="7nP-6N-82q"/>
+                                                <constraint firstAttribute="height" constant="44" id="Oal-Jh-KbG"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-vP-hnT">
+                                            <rect key="frame" x="80" y="55.5" width="314" height="44"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="버킷할일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAp-qh-qio">
+                                                    <rect key="frame" x="0.0" y="0.0" width="59" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgx-L4-jkj">
+                                                    <rect key="frame" x="0.0" y="24.5" width="29.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="sNe-dH-TW3"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="j1p-De-rF8" firstAttribute="leading" secondItem="orK-M7-FCd" secondAttribute="leading" constant="20" id="HZ1-U8-dHS"/>
+                                        <constraint firstAttribute="trailing" secondItem="bsa-vP-hnT" secondAttribute="trailing" constant="20" id="bpQ-Fd-lLn"/>
+                                        <constraint firstItem="bsa-vP-hnT" firstAttribute="leading" secondItem="j1p-De-rF8" secondAttribute="trailing" constant="16" id="cOL-4R-t3L"/>
+                                        <constraint firstItem="j1p-De-rF8" firstAttribute="centerY" secondItem="orK-M7-FCd" secondAttribute="centerY" id="e3S-wz-7PH"/>
+                                        <constraint firstItem="bsa-vP-hnT" firstAttribute="centerY" secondItem="orK-M7-FCd" secondAttribute="centerY" id="rcM-OH-6gg"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bucketListLabel" destination="jAp-qh-qio" id="3G3-TX-Tpk"/>
+                                    <outlet property="checkBoxButton" destination="j1p-De-rF8" id="8lj-xy-gRF"/>
+                                    <outlet property="dateLabel" destination="Zgx-L4-jkj" id="ipj-pN-YMY"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="IJG-am-n1l" id="80t-6k-XX1"/>
+                            <outlet property="delegate" destination="IJG-am-n1l" id="yqo-qA-cVi"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="userTextField" destination="1dS-JY-PZp" id="GPM-OE-LrK"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TnY-4M-Fk5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1124.6376811594205" y="128.57142857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

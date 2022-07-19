@@ -26,12 +26,18 @@ class KakaoSettingTableViewController: UITableViewController {
 
     // 섹션의 개수
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return settingDataManager.getSectionCount()
+        //return settingDataManager.getSectionCount()
+        
+        // ☘️ 열거형을 사용한 개선
+        return SettingOption.allCases.count
     }
 
     // 섹션별 셀의 개수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingDataManager.getSectionCellCount(at: section)
+        //return settingDataManager.getSectionCellCount(at: section)
+        
+        // ☘️ 열거형을 사용한 개선
+        return SettingOption.allCases[section].rowTitle.count
     }
 
     // 사용할 Cell
@@ -40,14 +46,20 @@ class KakaoSettingTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        cell.textLabel?.text = settingDataManager.getSectionCellTitle(sectionIndex: indexPath.section, cellIndex: indexPath.row)
+        //cell.textLabel?.text = settingDataManager.getSectionCellTitle(sectionIndex: indexPath.section, cellIndex: indexPath.row)
+        
+        // ☘️ 열거형을 사용한 개선
+        cell.textLabel?.text = SettingOption.allCases[indexPath.section].rowTitle[indexPath.row]
 
         return cell
     }
     
     // Header의 Title 설정
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return settingDataManager.getSectionTitle(at: section)
+        //return settingDataManager.getSectionTitle(at: section)
+        
+        // ☘️ 열거형을 사용한 개선
+        return SettingOption.allCases[section].sectionTitle
     }
     
 }
