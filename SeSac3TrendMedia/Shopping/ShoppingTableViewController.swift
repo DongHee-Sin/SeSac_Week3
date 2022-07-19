@@ -7,18 +7,18 @@
 
 import UIKit
 
+
+protocol ShoppingDataDelegate {
+    func addMemo(title: String)
+    func removeMemo(at index: Int)
+}
+
+
 class ShoppingTableViewController: UITableViewController {
     
     // MARK: - Propertys
     var shoppingListManager = ShoppingListManager()
-    
-    
-    
-    // MARK: - Outlet
-    @IBOutlet weak var shoppingTextField: UITextField!
-    
-    @IBOutlet weak var headerView: UIView!
-    
+
     
     
     // MARK: - View Did Load
@@ -32,68 +32,79 @@ class ShoppingTableViewController: UITableViewController {
    
     // MARK: - Methods
     func initialSetting() {
-        shoppingTextField.placeholder = "무엇을 구매하실 건가요?"
-        shoppingTextField.borderStyle = .none
-        
         tableView.keyboardDismissMode = .onDrag
-        
-        headerView.layer.cornerRadius = headerView.frame.height / 7
     }
     
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shoppingListManager.getListCount()
+        if section == 0 {
+            return 1
+        }else {
+            return shoppingListManager.getListCount()
+        }
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell", for: indexPath) as! ShoppingTableViewCell
         
-        let data = shoppingListManager.getMemo(at: indexPath.row)
-        
-        cell.selectionStyle = .none
-        cell.titleLabel.text = data.title
-        cell.checkMarkButton.setImage(data.isSelected ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
-        cell.starButton.setImage(data.isImportant ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
-        
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as! TextFieldTableViewCell
+            
+            cell.selectionStyle = .none
+            cell.delegate = self
+            
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell", for: indexPath) as! ShoppingTableViewCell
+            
+            let data = shoppingListManager.getMemo(at: indexPath.row)
+            
+            cell.selectionStyle = .none
+            cell.titleLabel.text = data.title
+            cell.checkMarkButton.setImage(data.isSelected ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
+            cell.starButton.setImage(data.isImportant ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
+            
+            return cell
+        }
     }
     
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return indexPath.section != 0 ? true : false
     }
     
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            shoppingListManager.removeMemo(at: indexPath.row)
-            tableView.reloadData()
+        if indexPath.section != 0 {
+            if editingStyle == .delete {
+                shoppingListManager.removeMemo(at: indexPath.row)
+                tableView.reloadData()
+            }
         }
     }
     
-    
-    @IBAction func addButtonDidTapped(_ sender: UIButton) {
-        addShoppingMemo()
-    }
-    
-    
-    @IBAction func shoppingTextFieldReturn(_ sender: UITextField) {
-        addShoppingMemo()
-    }
-    
-    
-    func addShoppingMemo() {
-        guard let title = shoppingTextField.text else {
-            return
-        }
+}
+
+
+extension ShoppingTableViewController: ShoppingDataDelegate {
+    func addMemo(title: String) {
         shoppingListManager.addMemo(title: title)
         tableView.reloadData()
-        shoppingTextField.text = nil
     }
+    
+    func removeMemo(at index: Int) {
+        shoppingListManager.removeMemo(at: index)
+        tableView.reloadData()
+    }
+    
 }

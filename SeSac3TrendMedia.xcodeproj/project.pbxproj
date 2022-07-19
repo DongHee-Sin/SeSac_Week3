@@ -20,6 +20,7 @@
 		D0C25ACC28868A0A002AB8E8 /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C25ACB28868A0A002AB8E8 /* ShoppingTableViewCell.swift */; };
 		D0C25ACE28869C35002AB8E8 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C25ACD28869C35002AB8E8 /* SearchTableViewController.swift */; };
 		D0C25AD028869DA1002AB8E8 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C25ACF28869DA1002AB8E8 /* SearchTableViewCell.swift */; };
+		D0C25AD32886B74B002AB8E8 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C25AD22886B74B002AB8E8 /* TextFieldTableViewCell.swift */; };
 		D0D7DC132886478B006A435D /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7DC122886478B006A435D /* UITextField+Extension.swift */; };
 		D0D7DC1628864B98006A435D /* BucketListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7DC1528864B98006A435D /* BucketListTableViewController.swift */; };
 		D0D7DC1828864DA5006A435D /* BucketListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7DC1728864DA5006A435D /* BucketListTableViewCell.swift */; };
@@ -48,6 +49,7 @@
 		D0C25ACB28868A0A002AB8E8 /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
 		D0C25ACD28869C35002AB8E8 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		D0C25ACF28869DA1002AB8E8 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		D0C25AD22886B74B002AB8E8 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		D0D7DC122886478B006A435D /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		D0D7DC1528864B98006A435D /* BucketListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListTableViewController.swift; sourceTree = "<group>"; };
 		D0D7DC1728864DA5006A435D /* BucketListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListTableViewCell.swift; sourceTree = "<group>"; };
@@ -130,7 +132,7 @@
 				D086934C28867DD00003FF88 /* Shopping.storyboard */,
 				D086934E28867E160003FF88 /* ShoppingTableViewController.swift */,
 				D0C25AC9288682F4002AB8E8 /* ShoppingListManager.swift */,
-				D0C25ACB28868A0A002AB8E8 /* ShoppingTableViewCell.swift */,
+				D0C25AD12886B72F002AB8E8 /* Cell */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -142,6 +144,15 @@
 				D0DA44D62884DDED00D12714 /* SceneDelegate.swift */,
 			);
 			path = "Life Cycle";
+			sourceTree = "<group>";
+		};
+		D0C25AD12886B72F002AB8E8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D0C25ACB28868A0A002AB8E8 /* ShoppingTableViewCell.swift */,
+				D0C25AD22886B74B002AB8E8 /* TextFieldTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D0D7DC1428864B3D006A435D /* Extension */ = {
@@ -265,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C25AD32886B74B002AB8E8 /* TextFieldTableViewCell.swift in Sources */,
 				D00B28602886453200BCE600 /* UIViewController+Extention.swift in Sources */,
 				D0C25ACA288682F4002AB8E8 /* ShoppingListManager.swift in Sources */,
 				D0DA44EB2884FE3C00D12714 /* SettingTableViewController.swift in Sources */,
