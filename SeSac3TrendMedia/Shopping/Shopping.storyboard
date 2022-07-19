@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="syD-TD-rB4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping Table View Controller-->
+        <!--쇼핑-->
         <scene sceneID="xaB-I7-Hif">
             <objects>
                 <tableViewController storyboardIdentifier="ShoppingTableViewController" id="zfu-v7-eIL" customClass="ShoppingTableViewController" customModule="SeSac3TrendMedia" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,9 +16,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="i2e-ce-sbj">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKF-Id-ppy">
+                                    <rect key="frame" x="345.5" y="20" width="48.5" height="73"/>
+                                    <color key="tintColor" systemColor="labelColor"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="gray" title="추가"/>
+                                </button>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place Holder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4QQ-fd-1GO">
+                                    <rect key="frame" x="20" y="20" width="110.5" height="73"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="jKF-Id-ppy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4QQ-fd-1GO" secondAttribute="trailing" constant="20" id="95w-SG-fNx"/>
+                                <constraint firstAttribute="trailing" secondItem="jKF-Id-ppy" secondAttribute="trailing" constant="20" id="NoU-cF-Fbe"/>
+                                <constraint firstItem="4QQ-fd-1GO" firstAttribute="top" secondItem="i2e-ce-sbj" secondAttribute="top" constant="20" id="OnF-fJ-chi"/>
+                                <constraint firstAttribute="bottom" secondItem="jKF-Id-ppy" secondAttribute="bottom" constant="20" id="jYd-lA-RB3"/>
+                                <constraint firstItem="jKF-Id-ppy" firstAttribute="top" secondItem="i2e-ce-sbj" secondAttribute="top" constant="20" id="knh-sT-qAP"/>
+                                <constraint firstAttribute="bottom" secondItem="4QQ-fd-1GO" secondAttribute="bottom" constant="20" id="rDh-v8-sCt"/>
+                                <constraint firstItem="4QQ-fd-1GO" firstAttribute="leading" secondItem="i2e-ce-sbj" secondAttribute="leading" constant="20" id="ywB-hZ-yec"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ay7-mN-rPo">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="157.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ay7-mN-rPo" id="wW3-jn-rIJ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -31,7 +58,10 @@
                             <outlet property="delegate" destination="zfu-v7-eIL" id="vre-nH-0z9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="vbn-QA-1ta"/>
+                    <navigationItem key="navigationItem" title="쇼핑" id="vbn-QA-1ta"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="4QQ-fd-1GO" id="Ezu-Zu-M8r"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJ6-7X-Aev" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,6 +87,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
