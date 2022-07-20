@@ -21,6 +21,14 @@
 		D0C25ACE28869C35002AB8E8 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C25ACD28869C35002AB8E8 /* SearchTableViewController.swift */; };
 		D0C25AD028869DA1002AB8E8 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C25ACF28869DA1002AB8E8 /* SearchTableViewCell.swift */; };
 		D0C25AD32886B74B002AB8E8 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C25AD22886B74B002AB8E8 /* TextFieldTableViewCell.swift */; };
+		D0D1865228878719002F9474 /* SeSacMovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D1865128878719002F9474 /* SeSacMovieTableViewController.swift */; };
+		D0D1865428878778002F9474 /* SeSacMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D1865328878778002F9474 /* SeSacMovieTableViewCell.swift */; };
+		D0D1865728878C9B002F9474 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D1865628878C9B002F9474 /* Movie.swift */; };
+		D0D1865928879560002F9474 /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D186582887955F002F9474 /* MovieInfo.swift */; };
+		D0D1865B28879AAF002F9474 /* RecommendCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D1865A28879AAF002F9474 /* RecommendCollectionViewController.swift */; };
+		D0D1865E28879DFC002F9474 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D1865D28879DFC002F9474 /* RecommendCollectionViewCell.swift */; };
+		D0D186612887AE4C002F9474 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D0D186602887AE4C002F9474 /* Kingfisher */; };
+		D0D186642887AE65002F9474 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = D0D186632887AE65002F9474 /* Toast */; };
 		D0D7DC132886478B006A435D /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7DC122886478B006A435D /* UITextField+Extension.swift */; };
 		D0D7DC1628864B98006A435D /* BucketListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7DC1528864B98006A435D /* BucketListTableViewController.swift */; };
 		D0D7DC1828864DA5006A435D /* BucketListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7DC1728864DA5006A435D /* BucketListTableViewCell.swift */; };
@@ -50,6 +58,12 @@
 		D0C25ACD28869C35002AB8E8 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		D0C25ACF28869DA1002AB8E8 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		D0C25AD22886B74B002AB8E8 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		D0D1865128878719002F9474 /* SeSacMovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSacMovieTableViewController.swift; sourceTree = "<group>"; };
+		D0D1865328878778002F9474 /* SeSacMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSacMovieTableViewCell.swift; sourceTree = "<group>"; };
+		D0D1865628878C9B002F9474 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		D0D186582887955F002F9474 /* MovieInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
+		D0D1865A28879AAF002F9474 /* RecommendCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewController.swift; sourceTree = "<group>"; };
+		D0D1865D28879DFC002F9474 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0D7DC122886478B006A435D /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		D0D7DC1528864B98006A435D /* BucketListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListTableViewController.swift; sourceTree = "<group>"; };
 		D0D7DC1728864DA5006A435D /* BucketListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListTableViewCell.swift; sourceTree = "<group>"; };
@@ -71,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0D186642887AE65002F9474 /* Toast in Frameworks */,
+				D0D186612887AE4C002F9474 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				D00B28572886404500BCE600 /* Trend.storyboard */,
+				D0D1865C28879AB3002F9474 /* 수업에서 진행한 파일 */,
 				D00B285B288643F800BCE600 /* TrendViewController.swift */,
 				D0D7DC1528864B98006A435D /* BucketListTableViewController.swift */,
 				D0D7DC1728864DA5006A435D /* BucketListTableViewCell.swift */,
@@ -130,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				D086934C28867DD00003FF88 /* Shopping.storyboard */,
+				D0D186552887877D002F9474 /* 수업에서 진행한 파일 */,
 				D086934E28867E160003FF88 /* ShoppingTableViewController.swift */,
 				D0C25AC9288682F4002AB8E8 /* ShoppingListManager.swift */,
 				D0C25AD12886B72F002AB8E8 /* Cell */,
@@ -153,6 +171,28 @@
 				D0C25AD22886B74B002AB8E8 /* TextFieldTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		D0D186552887877D002F9474 /* 수업에서 진행한 파일 */ = {
+			isa = PBXGroup;
+			children = (
+				D0D186582887955F002F9474 /* MovieInfo.swift */,
+				D0D1865128878719002F9474 /* SeSacMovieTableViewController.swift */,
+				D0D1865328878778002F9474 /* SeSacMovieTableViewCell.swift */,
+				D0D1865628878C9B002F9474 /* Movie.swift */,
+			);
+			name = "수업에서 진행한 파일";
+			path = "수업에서 진행한 파일";
+			sourceTree = "<group>";
+		};
+		D0D1865C28879AB3002F9474 /* 수업에서 진행한 파일 */ = {
+			isa = PBXGroup;
+			children = (
+				D0D1865A28879AAF002F9474 /* RecommendCollectionViewController.swift */,
+				D0D1865D28879DFC002F9474 /* RecommendCollectionViewCell.swift */,
+			);
+			name = "수업에서 진행한 파일";
+			path = "수업에서 진행한 파일";
 			sourceTree = "<group>";
 		};
 		D0D7DC1428864B3D006A435D /* Extension */ = {
@@ -215,6 +255,10 @@
 			dependencies = (
 			);
 			name = SeSac3TrendMedia;
+			packageProductDependencies = (
+				D0D186602887AE4C002F9474 /* Kingfisher */,
+				D0D186632887AE65002F9474 /* Toast */,
+			);
 			productName = SeSac3TrendMedia;
 			productReference = D0DA44D12884DDED00D12714 /* SeSac3TrendMedia.app */;
 			productType = "com.apple.product-type.application";
@@ -243,6 +287,10 @@
 				Base,
 			);
 			mainGroup = D0DA44C82884DDED00D12714;
+			packageReferences = (
+				D0D1865F2887AE4C002F9474 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				D0D186622887AE65002F9474 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+			);
 			productRefGroup = D0DA44D22884DDED00D12714 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -279,19 +327,25 @@
 				D0C25AD32886B74B002AB8E8 /* TextFieldTableViewCell.swift in Sources */,
 				D00B28602886453200BCE600 /* UIViewController+Extention.swift in Sources */,
 				D0C25ACA288682F4002AB8E8 /* ShoppingListManager.swift in Sources */,
+				D0D1865E28879DFC002F9474 /* RecommendCollectionViewCell.swift in Sources */,
 				D0DA44EB2884FE3C00D12714 /* SettingTableViewController.swift in Sources */,
 				D08A29042885342F00F65886 /* KakaoSettingTableViewController.swift in Sources */,
+				D0D1865B28879AAF002F9474 /* RecommendCollectionViewController.swift in Sources */,
 				D0DA44D92884DDED00D12714 /* ViewController.swift in Sources */,
 				D0D7DC132886478B006A435D /* UITextField+Extension.swift in Sources */,
+				D0D1865928879560002F9474 /* MovieInfo.swift in Sources */,
 				D086934F28867E160003FF88 /* ShoppingTableViewController.swift in Sources */,
 				D0C25ACE28869C35002AB8E8 /* SearchTableViewController.swift in Sources */,
 				D0DA44D52884DDED00D12714 /* AppDelegate.swift in Sources */,
 				D00B285C288643F800BCE600 /* TrendViewController.swift in Sources */,
 				D0C25ACC28868A0A002AB8E8 /* ShoppingTableViewCell.swift in Sources */,
+				D0D1865428878778002F9474 /* SeSacMovieTableViewCell.swift in Sources */,
 				D01E938F288549B50030FAD9 /* KakaoSettingModel.swift in Sources */,
+				D0D1865728878C9B002F9474 /* Movie.swift in Sources */,
 				D0D7DC1828864DA5006A435D /* BucketListTableViewCell.swift in Sources */,
 				D0C25AD028869DA1002AB8E8 /* SearchTableViewCell.swift in Sources */,
 				D0DA44D72884DDED00D12714 /* SceneDelegate.swift in Sources */,
+				D0D1865228878719002F9474 /* SeSacMovieTableViewController.swift in Sources */,
 				D0D7DC1628864B98006A435D /* BucketListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,7 +497,7 @@
 				INFOPLIST_FILE = SeSac3TrendMedia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Shopping;
+				INFOPLIST_KEY_UIMainStoryboardFile = Trend;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -471,7 +525,7 @@
 				INFOPLIST_FILE = SeSac3TrendMedia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Shopping;
+				INFOPLIST_KEY_UIMainStoryboardFile = Trend;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -510,6 +564,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D0D1865F2887AE4C002F9474 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		D0D186622887AE65002F9474 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D0D186602887AE4C002F9474 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0D1865F2887AE4C002F9474 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		D0D186632887AE65002F9474 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0D186622887AE65002F9474 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D0DA44C92884DDED00D12714 /* Project object */;
 }
