@@ -9,6 +9,9 @@ import UIKit
 
 class BucketListTableViewCell: UITableViewCell {
 
+    // 오타방지
+    static let identifier = "BucketListTableViewCell"
+    
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var bucketListLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

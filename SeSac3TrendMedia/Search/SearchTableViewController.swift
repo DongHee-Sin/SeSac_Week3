@@ -10,6 +10,7 @@ import UIKit
 class SearchTableViewController: UITableViewController {
     
     
+    
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,5 +39,15 @@ class SearchTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
         return cell
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "Trend", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "RecommendCollectionViewController") as? RecommendCollectionViewController else {
+            return
+        }
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

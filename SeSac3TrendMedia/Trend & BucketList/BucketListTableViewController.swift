@@ -9,6 +9,8 @@ import UIKit
 
 class BucketListTableViewController: UITableViewController {
 
+    static let identifier = "BucketListTableViewController"
+    
     var list = ["범죄도시2", "탑건", "토르"]
     
     @IBOutlet weak var userTextField: UITextField!
@@ -18,10 +20,20 @@ class BucketListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // navigation 설정
+        navigationItem.title = "버킷리스트"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonTapped))
+        
+        
         tableView.rowHeight = 80
         
         list.append("마녀")
         list.append("아이언맨")
+    }
+    
+    
+    @objc func closeButtonTapped() {
+        self.dismiss(animated: true)
     }
 
     
@@ -33,7 +45,9 @@ class BucketListTableViewController: UITableViewController {
         
         // 매개변수 for: 는 indexPath값을 다르게 가져가고 싶을 때 사용
         // 동일하게 indexPath를 가져간다면 생략해도 괜찮다.
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BucketListTableViewCell", for: indexPath) as! BucketListTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BucketListTableViewCell.identifier, for: indexPath) as? BucketListTableViewCell else {
+            return UITableViewCell()
+        }
         
         cell.bucketListLabel.text = list[indexPath.row]
         cell.bucketListLabel.font = .boldSystemFont(ofSize: 13)
@@ -43,9 +57,22 @@ class BucketListTableViewController: UITableViewController {
     
     
     @IBAction func userTextFieldReturn(_ sender: UITextField) {
-        list.append(sender.text!)
         
-        // 데이터가 변동되는 시점에 TableView를 다시 그리기
+        // case 2. if let
+        if let value = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty, (2...6).contains(value.count) {
+            list.append(value)
+            tableView.reloadData()   // 데이터가 변동되는 시점에 TableView를 다시 그리기
+        }else {
+            // Alert, Toast를 통해 바인딩이 실패했음을 알려줘야 함
+        }
+        
+        // case 3. guard let
+        guard let value = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty, (2...6).contains(value.count) else {
+            // Alert, Toast를 통해 바인딩이 실패했음을 알려줘야 함
+            return
+        }
+        
+        list.append(value)
         tableView.reloadData()
         
 //        tableView.reloadSections(IndexSet(integer: 0), with: .fade)
