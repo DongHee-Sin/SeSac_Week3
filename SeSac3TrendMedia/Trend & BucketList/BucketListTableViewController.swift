@@ -15,7 +15,7 @@ class BucketListTableViewController: UITableViewController {
     
     @IBOutlet weak var userTextField: UITextField!
     
-    
+    var placeHolder: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,7 @@ class BucketListTableViewController: UITableViewController {
         navigationItem.title = "버킷리스트"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonTapped))
         
+        userTextField.placeholder = "\(placeHolder ?? "검색어")를 입력해주세요"
         
         tableView.rowHeight = 80
         

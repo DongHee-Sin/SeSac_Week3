@@ -11,11 +11,20 @@ import Kingfisher
 
 class RecommendCollectionViewController: UICollectionViewController {
 
+    // 1. 데이터를 받을 공간 (프로퍼티 생성)
+    var movieData: Movie?
+    
+    
     var imageURL = "https://movie-phinf.pstatic.net/20220720_283/1658284839003UzxoT_JPEG/movie_image.jpg"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // 3. 프로퍼티 값을 뷰에 표현
+        // title == NavigationItem의 Title
+        title = movieData?.title
+        
+        
         // Flow Layout -> 전통적인 방법
         // 컬렉션뷰의 셀 크기, 셀 사이 간격 등 설정 필요
         // 일반적으로 비율을 통해 잡음

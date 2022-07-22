@@ -29,6 +29,8 @@ class TrendTableViewController: UITableViewController {
             return
         }
 
+        vc.placeHolder = sender.currentTitle
+        
         // 3. 화면 전환
         self.present(vc, animated: true)
     }
@@ -48,7 +50,8 @@ class TrendTableViewController: UITableViewController {
         
         // 2.5 : persent style 변경
         vc.modalPresentationStyle = .fullScreen
-        
+
+        vc.placeHolder = sender.currentTitle
         
         // 3.
         self.present(vc, animated: true)
@@ -66,6 +69,7 @@ class TrendTableViewController: UITableViewController {
             return
         }
 
+        vc.placeHolder = sender.currentTitle
         
         // 2.5 : navi 붙이기 / 임베드
         let nav = UINavigationController(rootViewController: vc)

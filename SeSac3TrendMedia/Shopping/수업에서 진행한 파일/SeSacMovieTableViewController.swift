@@ -25,13 +25,13 @@ class SeSacMovieTableViewController: UITableViewController {
     // MARK: - Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieList.movie.count
+        return movieList.movieList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SeSacMovieTableViewCell", for: indexPath) as! SeSacMovieTableViewCell
     
-        let data = movieList.movie[indexPath.row]
+        let data = movieList.movieList[indexPath.row]
         cell.configureCell(data: data)
         
         return cell

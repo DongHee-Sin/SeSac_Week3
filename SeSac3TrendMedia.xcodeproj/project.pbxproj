@@ -13,6 +13,7 @@
 		D00B285C288643F800BCE600 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B285B288643F800BCE600 /* TrendViewController.swift */; };
 		D00B28602886453200BCE600 /* UIViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00B285F2886453200BCE600 /* UIViewController+Extention.swift */; };
 		D01E938F288549B50030FAD9 /* KakaoSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E938E288549B50030FAD9 /* KakaoSettingModel.swift */; };
+		D07CB8EE288A3F8B0068F15B /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07CB8ED288A3F8B0068F15B /* TestViewController.swift */; };
 		D086934D28867DD00003FF88 /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D086934C28867DD00003FF88 /* Shopping.storyboard */; };
 		D086934F28867E160003FF88 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086934E28867E160003FF88 /* ShoppingTableViewController.swift */; };
 		D08A29042885342F00F65886 /* KakaoSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08A29032885342F00F65886 /* KakaoSettingTableViewController.swift */; };
@@ -52,6 +53,7 @@
 		D00B285B288643F800BCE600 /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		D00B285F2886453200BCE600 /* UIViewController+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extention.swift"; sourceTree = "<group>"; };
 		D01E938E288549B50030FAD9 /* KakaoSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoSettingModel.swift; sourceTree = "<group>"; };
+		D07CB8ED288A3F8B0068F15B /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D086934C28867DD00003FF88 /* Shopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shopping.storyboard; sourceTree = "<group>"; };
 		D086934E28867E160003FF88 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
 		D08A29032885342F00F65886 /* KakaoSettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoSettingTableViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				D0D1865A28879AAF002F9474 /* RecommendCollectionViewController.swift */,
 				D0D1865D28879DFC002F9474 /* RecommendCollectionViewCell.swift */,
+				D07CB8ED288A3F8B0068F15B /* TestViewController.swift */,
 			);
 			name = "수업에서 진행한 파일";
 			path = "수업에서 진행한 파일";
@@ -244,9 +247,9 @@
 				D086934828867D5F0003FF88 /* Search */,
 				D086934728867D4A0003FF88 /* Trend & BucketList */,
 				D086935028867E270003FF88 /* Shopping */,
-				D00B28592886407A00BCE600 /* Intro.storyboard */,
 				D0BE76AA2888ED7F007AEB98 /* 화면전환 실습 */,
 				D0D7DC1428864B3D006A435D /* Extension */,
+				D00B28592886407A00BCE600 /* Intro.storyboard */,
 				D0DA44DD2884DDEE00D12714 /* Assets.xcassets */,
 				D0DA44DF2884DDEE00D12714 /* LaunchScreen.storyboard */,
 				D0DA44E22884DDEE00D12714 /* Info.plist */,
@@ -350,6 +353,7 @@
 				D0D1865B28879AAF002F9474 /* RecommendCollectionViewController.swift in Sources */,
 				D0DA44D92884DDED00D12714 /* ViewController.swift in Sources */,
 				D0D7DC132886478B006A435D /* UITextField+Extension.swift in Sources */,
+				D07CB8EE288A3F8B0068F15B /* TestViewController.swift in Sources */,
 				D0D1865928879560002F9474 /* MovieInfo.swift in Sources */,
 				D086934F28867E160003FF88 /* ShoppingTableViewController.swift in Sources */,
 				D0C25ACE28869C35002AB8E8 /* SearchTableViewController.swift in Sources */,
