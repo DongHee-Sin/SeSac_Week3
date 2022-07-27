@@ -12,7 +12,9 @@ class SettingTableViewController: UITableViewController {
     var birthdayFriends = ["뽀로로", "고래밥", "모구리", "스노기", "신데렐라"]
     
     
+    // MARK: - ViewController LifeCycle
     
+    /// 뷰가 메모리에 올라오면 실행
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +31,13 @@ class SettingTableViewController: UITableViewController {
     
     
     // Header Title
+    
+    
+    /// 설명
+    /// - Parameters:
+    ///   - tableView: 테이블뷰
+    ///   - section: 섹션
+    /// - Returns: 리턴하기
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "생일인 친구"

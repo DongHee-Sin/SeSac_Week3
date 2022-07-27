@@ -12,7 +12,11 @@ class BucketListTableViewCell: UITableViewCell {
     // 오타방지
     static let identifier = "BucketListTableViewCell"
     
-    @IBOutlet weak var checkBoxButton: UIButton!
+    @IBOutlet weak var checkBoxButton: UIButton! {
+        didSet {
+            checkBoxButton.setTitle("", for: .normal)
+        }
+    }
     @IBOutlet weak var bucketListLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     

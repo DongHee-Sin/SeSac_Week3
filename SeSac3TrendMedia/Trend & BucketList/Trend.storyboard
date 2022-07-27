@@ -87,7 +87,7 @@
                                                 <constraint firstAttribute="height" constant="44" id="Oal-Jh-KbG"/>
                                             </constraints>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="checkmark.rectangle" catalog="system"/>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-vP-hnT">
                                             <rect key="frame" x="80" y="55.5" width="314" height="44"/>
@@ -216,6 +216,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.rectangle" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

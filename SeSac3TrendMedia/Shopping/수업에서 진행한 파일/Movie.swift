@@ -14,3 +14,19 @@ struct Movie {
     var overview: String
     var rate: Double
 }
+
+
+class User {
+    let name: String
+    let age: Int
+    let rage: Double
+    let gender: Bool
+    
+    init(name: String, age: Int, rage: Double, gender: Bool) {
+        self.name = name
+        self.age = age
+        self.rage = rage
+        self.gender = gender
+    }
+    
+}

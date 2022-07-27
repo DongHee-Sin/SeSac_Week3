@@ -7,13 +7,32 @@
 
 import UIKit
 
+
+struct Todo {
+    var title: String
+    var done: Bool
+}
+
+
 class BucketListTableViewController: UITableViewController {
 
     static let identifier = "BucketListTableViewController"
     
-    var list = ["범죄도시2", "탑건", "토르"]
+    // list 프로퍼티가 추가, 삭제 등 변경 되고 나서 테이블뷰를 항상 갱신!
+    var list = [Todo(title: "범죄도시", done: false), Todo(title: "탑건", done: false)] {
+        didSet {
+            // 데이터가 변하면 싹다 리로드 시키므로 하나만 리로드할 필요가 있을 때 비요율적일 수 있다.
+            //tableView.reloadData()
+            print("list가 변경됨 \(list)")
+        }
+    }
     
-    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var userTextField: UITextField! {
+        didSet {
+            userTextField.textColor = .systemRed
+            print("텍스트필드 DidSet")
+        }
+    }
     
     var placeHolder: String?
     
@@ -28,8 +47,8 @@ class BucketListTableViewController: UITableViewController {
         
         tableView.rowHeight = 80
         
-        list.append("마녀")
-        list.append("아이언맨")
+        list.append(Todo(title: "마녀", done: true))
+        list.append(Todo(title: "아이언맨", done: true))
     }
     
     
@@ -50,31 +69,51 @@ class BucketListTableViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        cell.bucketListLabel.text = list[indexPath.row]
+        cell.bucketListLabel.text = list[indexPath.row].title
         cell.bucketListLabel.font = .boldSystemFont(ofSize: 13)
+        
+        cell.checkBoxButton.tag = indexPath.row
+        cell.checkBoxButton.addTarget(self, action: #selector(checkboxButtonTapped(sender:)), for: .touchUpInside)
+        cell.checkBoxButton.setImage(list[indexPath.row].done ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
         
         return cell
     }
     
     
+    @objc func checkboxButtonTapped(sender: UIButton) {
+        print("\(sender.tag)번째 버튼 클릭!")
+        
+        // 배열 index를 찾아서 done를 바꿔야된다. 그리고 테이블뷰 갱신
+        // 여기서 값 변경, List가 변경되므로 자동으로 reload()
+        list[sender.tag].done.toggle()
+        
+        // 필요한 셀만 리로드하므로 효율적임
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .fade)
+        
+        // 재사용 셀 오류 확인용 코드
+        //sender.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
+    }
+    
+    
     @IBAction func userTextFieldReturn(_ sender: UITextField) {
         
-        // case 2. if let
-        if let value = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty, (2...6).contains(value.count) {
-            list.append(value)
-            tableView.reloadData()   // 데이터가 변동되는 시점에 TableView를 다시 그리기
-        }else {
-            // Alert, Toast를 통해 바인딩이 실패했음을 알려줘야 함
-        }
+//        // case 2. if let
+//        if let value = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty, (2...6).contains(value.count) {
+//            list.append(value)
+//            tableView.reloadData()   // 데이터가 변동되는 시점에 TableView를 다시 그리기
+//        }else {
+//            // Alert, Toast를 통해 바인딩이 실패했음을 알려줘야 함
+//        }
+//
+//        // case 3. guard let
+//        guard let value = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty, (2...6).contains(value.count) else {
+//            // Alert, Toast를 통해 바인딩이 실패했음을 알려줘야 함
+//            return
+//        }
         
-        // case 3. guard let
-        guard let value = sender.text?.trimmingCharacters(in: .whitespacesAndNewlines), !value.isEmpty, (2...6).contains(value.count) else {
-            // Alert, Toast를 통해 바인딩이 실패했음을 알려줘야 함
-            return
-        }
-        
-        list.append(value)
-        tableView.reloadData()
+//        list.append(value)
+        list.append(Todo(title: sender.text!, done: false))
+        //tableView.reloadData()
         
 //        tableView.reloadSections(IndexSet(integer: 0), with: .fade)
 //        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .fade)

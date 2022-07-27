@@ -14,10 +14,9 @@ class SearchTableViewController: UITableViewController {
     // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "처음으로", style: .plain, target: self, action: #selector(resetButtonTapped))
     }
-
     
     
     

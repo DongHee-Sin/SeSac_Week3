@@ -17,27 +17,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // 여기있으면 안되는 코드
         //UserDefaults.standard.set(false, forKey: "First")  // ture이면 VC를 띄우고, false이면 SearchMovieVC를 띄우기
         
-        guard let scene = (scene as? UIWindowScene) else { return }
+        guard let _ = (scene as? UIWindowScene) else { return }
         
-        window = UIWindow(windowScene: scene)
-        
-        if UserDefaults.standard.bool(forKey: "First") {
-            // root VC 생성
-            let sb = UIStoryboard(name: "Trend", bundle: nil)
-            guard let vc = sb.instantiateViewController(withIdentifier: "TestViewController") as? TestViewController else {
-                return
-            }
-            window?.rootViewController = vc
-        }else {
-            // root VC 생성
-            let sb = UIStoryboard(name: "Search", bundle: nil)
-            guard let vc = sb.instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController else {
-                return
-            }
-            window?.rootViewController = UINavigationController(rootViewController: vc)
-        }
-        
-        window?.makeKeyAndVisible()
+//        window = UIWindow(windowScene: scene)
+//        
+//        if UserDefaults.standard.bool(forKey: "First") {
+//            // root VC 생성
+//            let sb = UIStoryboard(name: "Trend", bundle: nil)
+//            guard let vc = sb.instantiateViewController(withIdentifier: "TestViewController") as? TestViewController else {
+//                return
+//            }
+//            window?.rootViewController = vc
+//        }else {
+//            // root VC 생성
+//            let sb = UIStoryboard(name: "Search", bundle: nil)
+//            guard let vc = sb.instantiateViewController(withIdentifier: "SearchTableViewController") as? SearchTableViewController else {
+//                return
+//            }
+//            window?.rootViewController = UINavigationController(rootViewController: vc)
+//        }
+//
+//        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
