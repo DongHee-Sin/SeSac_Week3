@@ -66,6 +66,9 @@
                                             <rect key="frame" x="20" y="15" width="30" height="26"/>
                                             <color key="tintColor" systemColor="labelColor"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <connections>
+                                                <action selector="finishButtonTapped:" destination="ay7-mN-rPo" eventType="touchUpInside" id="YRu-78-msE"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojm-6y-m1z">
                                             <rect key="frame" x="70" y="15" width="37.5" height="26"/>
@@ -77,6 +80,9 @@
                                             <rect key="frame" x="324" y="15" width="30" height="21"/>
                                             <color key="tintColor" systemColor="labelColor"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <connections>
+                                                <action selector="importantButtonTapped:" destination="ay7-mN-rPo" eventType="touchUpInside" id="1IF-31-xIR"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -186,6 +192,9 @@
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="importantButtonTapped:" destination="99z-jY-xGj" eventType="touchUpInside" id="jlL-vR-S5q"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgs-3o-vtj">
                                                     <rect key="frame" x="68" y="17.5" width="222" height="21"/>
@@ -222,6 +231,7 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQ7-gk-S2a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="99z-jY-xGj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="94" y="1175"/>
         </scene>

@@ -68,6 +68,9 @@ class ShoppingTableViewController: UITableViewController {
             cell.checkMarkButton.setImage(data.isFinish ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
             cell.starButton.setImage(data.isImportant ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
             
+            cell.delegate = self
+            cell.index = indexPath.row
+            
             return cell
         }
     }
@@ -101,4 +104,18 @@ extension ShoppingTableViewController: ShoppingDataDelegate {
         tableView.reloadData()
     }
     
+}
+
+
+
+extension ShoppingTableViewController: ButtonActionDelegate {
+    func finishButtonTapped(index: Int) {
+        shoppingListManager.finishTapped(index: index)
+        tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .fade)
+    }
+    
+    func importantButtonTapped(index: Int) {
+        shoppingListManager.importantTapped(index: index)
+        tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .fade)
+    }
 }

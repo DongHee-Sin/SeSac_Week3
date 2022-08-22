@@ -48,12 +48,20 @@ struct ShoppingListManager {
     }
     
     
-    mutating func selectedTapped(index: Int) {
-        shoppingList[index].isFinish.toggle()
+    mutating func finishTapped(index: Int) {
+        let taskToUpdate = shoppingList[index]
+        try! localRealm.write {
+            taskToUpdate.isFinish.toggle()
+        }
+        shoppingList = localRealm.objects(Shopping.self)
     }
     
     
     mutating func importantTapped(index: Int) {
-        shoppingList[index].isImportant.toggle()
+        let taskToUpdate = shoppingList[index]
+        try! localRealm.write {
+            taskToUpdate.isImportant.toggle()
+        }
+        shoppingList = localRealm.objects(Shopping.self)
     }
 }

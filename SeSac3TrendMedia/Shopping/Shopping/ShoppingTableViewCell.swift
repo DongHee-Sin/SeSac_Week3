@@ -7,6 +7,14 @@
 
 import UIKit
 
+
+protocol ButtonActionDelegate {
+    func finishButtonTapped(index: Int)
+    
+    func importantButtonTapped(index: Int)
+}
+
+
 class ShoppingTableViewCell: UITableViewCell {
 
     // MARK: - Outlet
@@ -16,7 +24,8 @@ class ShoppingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var starButton: UIButton!
     
-    
+    var delegate: ButtonActionDelegate?
+    var index: Int?
     
     
     override func awakeFromNib() {
@@ -30,4 +39,14 @@ class ShoppingTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
+    
+    @IBAction func finishButtonTapped(_ sender: UIButton) {
+        delegate?.finishButtonTapped(index: index!)
+    }
+    
+    
+    @IBAction func importantButtonTapped(_ sender: UIButton) {
+        delegate?.importantButtonTapped(index: index!)
+    }
 }
