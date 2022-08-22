@@ -40,17 +40,11 @@ class ShoppingTableViewController: UITableViewController {
         return 2
     }
     
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
-    }
-    
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         }else {
-            return shoppingListManager.getListCount()
+            return shoppingListManager.count
         }
     }
     
@@ -71,7 +65,7 @@ class ShoppingTableViewController: UITableViewController {
             
             cell.selectionStyle = .none
             cell.titleLabel.text = data.title
-            cell.checkMarkButton.setImage(data.isSelected ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
+            cell.checkMarkButton.setImage(data.isFinish ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
             cell.starButton.setImage(data.isImportant ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
             
             return cell
