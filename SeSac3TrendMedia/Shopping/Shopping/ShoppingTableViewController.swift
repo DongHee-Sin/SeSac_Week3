@@ -33,9 +33,52 @@ class ShoppingTableViewController: UITableViewController {
     // MARK: - Methods
     func initialSetting() {
         tableView.keyboardDismissMode = .onDrag
+        
+        setBarButton()
+    }
+    
+    func setBarButton() {
+        let sortByTitle = UIAction(title: "Title 기준 정렬", image: UIImage(systemName: "textformat"), identifier: nil) { [weak self] _ in
+            guard let self = self else { return }
+            self.selectedSortBy(by: .title)
+        }
+        
+        let sortByImportant = UIAction(title: "중요도 기준 정렬", image: UIImage(systemName: "textformat"), identifier: nil) { [weak self] _ in
+            guard let self = self else { return }
+            self.selectedSortBy(by: .important)
+        }
+        
+        let sortByFinished = UIAction(title: "완료 기준 정렬", image: UIImage(systemName: "textformat"), identifier: nil) { [weak self] _ in
+            guard let self = self else { return }
+            self.selectedSortBy(by: .finished)
+        }
+        
+        let defaultSort = UIAction(title: "기본 정렬", image: UIImage(systemName: "textformat"), identifier: nil) { [weak self] _ in
+            guard let self = self else { return }
+            self.selectedSortBy(by: .none)
+        }
+        
+        let sortBarButton = UIBarButtonItem(title: nil,
+                                            image: UIImage(systemName: "arrow.up.arrow.down.circle"),
+                                            primaryAction: nil,
+                                            menu: UIMenu(title: "정렬 기준 선택", subtitle: nil, image: nil, identifier: nil, options: .displayInline, children: [sortByTitle, sortByImportant, sortByFinished, defaultSort]))
+        
+        sortBarButton.tintColor = .darkGray
+        
+        navigationItem.rightBarButtonItem = sortBarButton
+    }
+    
+    
+    func selectedSortBy(by sortBY: SortBy) {
+        shoppingListManager.currentSortBy = sortBY
+        shoppingListManager.readData()
+        tableView.reloadData()
     }
     
 
+    
+    
+    // MARK: - TableView Methods
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -93,6 +136,8 @@ class ShoppingTableViewController: UITableViewController {
 }
 
 
+
+// MARK: - CR Delegate
 extension ShoppingTableViewController: ShoppingDataDelegate {
     func addMemo(title: String) {
         shoppingListManager.addMemo(title: title)
@@ -108,14 +153,15 @@ extension ShoppingTableViewController: ShoppingDataDelegate {
 
 
 
+// MARK: - ButtonAction Delegate
 extension ShoppingTableViewController: ButtonActionDelegate {
     func finishButtonTapped(index: Int) {
         shoppingListManager.finishTapped(index: index)
-        tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .fade)
+        tableView.reloadData()
     }
     
     func importantButtonTapped(index: Int) {
         shoppingListManager.importantTapped(index: index)
-        tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .fade)
+        tableView.reloadData()
     }
 }

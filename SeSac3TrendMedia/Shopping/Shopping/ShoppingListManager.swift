@@ -8,6 +8,15 @@
 import Foundation
 import RealmSwift
 
+
+enum SortBy {
+    case title
+    case important
+    case finished
+    case none
+}
+
+
 struct ShoppingListManager {
     
     // MARK: - Propertys
@@ -16,6 +25,9 @@ struct ShoppingListManager {
     private var shoppingList: Results<Shopping>
     
     var count: Int { return shoppingList.count }
+    
+    var currentSortBy: SortBy = .none
+    
     
     
     // MARK: - Init
@@ -27,6 +39,21 @@ struct ShoppingListManager {
     
     
     // MARK: - Methods
+    
+    mutating func readData() {
+        switch currentSortBy {
+        case .title:
+            shoppingList = localRealm.objects(Shopping.self).sorted(byKeyPath: "title", ascending: true)
+        case .important:
+            shoppingList = localRealm.objects(Shopping.self).sorted(byKeyPath: "isImportant", ascending: true)
+        case .finished:
+            shoppingList = localRealm.objects(Shopping.self).sorted(byKeyPath: "isFinish", ascending: true)
+        case .none:
+            shoppingList = localRealm.objects(Shopping.self)
+        }
+    }
+    
+    
     func getMemo(at index: Int) -> Shopping{
         return shoppingList[index]
     }
@@ -53,7 +80,6 @@ struct ShoppingListManager {
         try! localRealm.write {
             taskToUpdate.isFinish.toggle()
         }
-        shoppingList = localRealm.objects(Shopping.self)
     }
     
     
@@ -62,6 +88,5 @@ struct ShoppingListManager {
         try! localRealm.write {
             taskToUpdate.isImportant.toggle()
         }
-        shoppingList = localRealm.objects(Shopping.self)
     }
 }
