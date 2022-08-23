@@ -43,17 +43,17 @@ class ShoppingTableViewController: UITableViewController {
             self.selectedSortBy(by: .title)
         }
         
-        let sortByImportant = UIAction(title: "중요도 기준 정렬", image: UIImage(systemName: "textformat"), identifier: nil) { [weak self] _ in
+        let sortByImportant = UIAction(title: "중요도 기준 정렬", image: UIImage(systemName: "star.fill"), identifier: nil) { [weak self] _ in
             guard let self = self else { return }
             self.selectedSortBy(by: .important)
         }
         
-        let sortByFinished = UIAction(title: "완료 기준 정렬", image: UIImage(systemName: "textformat"), identifier: nil) { [weak self] _ in
+        let sortByFinished = UIAction(title: "완료 기준 정렬", image: UIImage(systemName: "checkmark.square.fill"), identifier: nil) { [weak self] _ in
             guard let self = self else { return }
             self.selectedSortBy(by: .finished)
         }
         
-        let defaultSort = UIAction(title: "기본 정렬", image: UIImage(systemName: "textformat"), identifier: nil) { [weak self] _ in
+        let defaultSort = UIAction(title: "기본 정렬", image: UIImage(systemName: "circle.dashed"), identifier: nil) { [weak self] _ in
             guard let self = self else { return }
             self.selectedSortBy(by: .none)
         }
@@ -131,6 +131,18 @@ class ShoppingTableViewController: UITableViewController {
                 tableView.reloadData()
             }
         }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ShoppingDetailViewController") as? ShoppingDetailViewController else {
+            return
+        }
+        
+        let data = shoppingListManager.getMemo(at: indexPath.row)
+        vc.shoppingData = data
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

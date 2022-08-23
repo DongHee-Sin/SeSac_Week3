@@ -47,6 +47,7 @@
 		D0DA44E92884F10A00D12714 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0DA44E82884F10A00D12714 /* Home.storyboard */; };
 		D0DA44EB2884FE3C00D12714 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA44EA2884FE3C00D12714 /* SettingTableViewController.swift */; };
 		D0DA44ED28850FCE00D12714 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0DA44EC28850FCE00D12714 /* Setting.storyboard */; };
+		D0F7105928B4D63000378D15 /* ShoppingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F7105828B4D63000378D15 /* ShoppingDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		D0DA44E82884F10A00D12714 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		D0DA44EA2884FE3C00D12714 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		D0DA44EC28850FCE00D12714 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		D0F7105828B4D63000378D15 /* ShoppingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				D086934E28867E160003FF88 /* ShoppingTableViewController.swift */,
 				D0C25ACB28868A0A002AB8E8 /* ShoppingTableViewCell.swift */,
 				D0C25AD22886B74B002AB8E8 /* TextFieldTableViewCell.swift */,
+				D0F7105828B4D63000378D15 /* ShoppingDetailViewController.swift */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				D086934F28867E160003FF88 /* ShoppingTableViewController.swift in Sources */,
 				D0C25ACE28869C35002AB8E8 /* SearchTableViewController.swift in Sources */,
 				D0DA44D52884DDED00D12714 /* AppDelegate.swift in Sources */,
+				D0F7105928B4D63000378D15 /* ShoppingDetailViewController.swift in Sources */,
 				D00B285C288643F800BCE600 /* TrendViewController.swift in Sources */,
 				D0C25ACC28868A0A002AB8E8 /* ShoppingTableViewCell.swift in Sources */,
 				D0D1865428878778002F9474 /* SeSacMovieTableViewCell.swift in Sources */,
