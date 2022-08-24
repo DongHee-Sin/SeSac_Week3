@@ -40,10 +40,13 @@
                                                 <action selector="shoppingTextFieldReturn:" destination="8MD-qd-TTW" eventType="editingDidEndOnExit" id="Vk6-Ji-Y4E"/>
                                             </connections>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4t7-aC-ptt">
-                                            <rect key="frame" x="240.5" y="15" width="50" height="34"/>
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4t7-aC-ptt">
+                                            <rect key="frame" x="256.5" y="15" width="34" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="4t7-aC-ptt" secondAttribute="height" multiplier="1:1" id="fya-rs-Tj9"/>
+                                            </constraints>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" image="photo" catalog="system"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="photo.circle" catalog="system"/>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -411,7 +414,7 @@
     </scenes>
     <resources>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
-        <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="photo.circle" catalog="system" width="128" height="121"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

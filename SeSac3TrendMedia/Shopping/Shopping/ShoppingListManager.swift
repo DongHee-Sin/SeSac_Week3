@@ -5,7 +5,7 @@
 //  Created by 신동희 on 2022/07/19.
 //
 
-import Foundation
+import UIKit
 import RealmSwift
 
 
@@ -59,16 +59,23 @@ struct ShoppingListManager {
     }
     
     
-    mutating func addMemo(title: String) {
+    mutating func addMemo(title: String, image: UIImage? = nil) {
         let task = Shopping(title: title)
         try! localRealm.write {
             localRealm.add(task)
+        }
+        
+        if let image = image {
+            saveImageToDocument(fileName: "\(task.objectId)", image: image)
         }
     }
     
     
     mutating func removeMemo(at index: Int) {
         let taskToDelete = shoppingList[index]
+        
+        removeImageFromDocument(fileName: "\(taskToDelete.objectId)")
+        
         try! localRealm.write {
             localRealm.delete(taskToDelete)
         }
@@ -87,6 +94,34 @@ struct ShoppingListManager {
         let taskToUpdate = shoppingList[index]
         try! localRealm.write {
             taskToUpdate.isImportant.toggle()
+        }
+    }
+    
+    
+    
+    // Document
+    func saveImageToDocument(fileName: String, image: UIImage) {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let fileURL = documentDirectory.appendingPathComponent("\(fileName).jpg")
+        
+        guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+        
+        do {
+            try data.write(to: fileURL)
+        }catch let error {
+            print(error)
+        }
+    }
+    
+    
+    func removeImageFromDocument(fileName: String) {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let fileURL = documentDirectory.appendingPathComponent("\(fileName).jpg")
+        
+        do {
+            try FileManager.default.removeItem(at: fileURL)
+        }catch let error {
+            print(error)
         }
     }
 }

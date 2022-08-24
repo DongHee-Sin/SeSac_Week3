@@ -32,13 +32,6 @@ class ShoppingTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
     
     
     @IBAction func finishButtonTapped(_ sender: UIButton) {
@@ -48,5 +41,17 @@ class ShoppingTableViewCell: UITableViewCell {
     
     @IBAction func importantButtonTapped(_ sender: UIButton) {
         delegate?.importantButtonTapped(index: index!)
+    }
+    
+    
+    func loadImageFromDocument(fileName: String) {
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let fileURL = documentDirectory.appendingPathComponent("\(fileName).jpg")
+        
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            shoppingImageView.image = UIImage(contentsOfFile: fileURL.path)
+        }else {
+            shoppingImageView.image = UIImage(systemName: "star.fill")
+        }
     }
 }

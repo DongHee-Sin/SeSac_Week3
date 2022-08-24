@@ -119,6 +119,8 @@ class ShoppingTableViewController: UITableViewController {
             
             if let selectedImage = selectedImage {
                 cell.imageButton.setImage(selectedImage, for: .normal)
+            }else {
+                cell.imageButton.setImage(UIImage(systemName: "photo.circle"), for: .normal)
             }
             
             return cell
@@ -127,7 +129,7 @@ class ShoppingTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell", for: indexPath) as! ShoppingTableViewCell
             
             let data = shoppingListManager.getMemo(at: indexPath.row)
-            
+        
             cell.selectionStyle = .none
             cell.titleLabel.text = data.title
             cell.checkMarkButton.setImage(data.isFinish ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
@@ -136,8 +138,15 @@ class ShoppingTableViewController: UITableViewController {
             cell.delegate = self
             cell.index = indexPath.row
             
+            cell.loadImageFromDocument(fileName: "\(data.objectId)")
+            
             return cell
         }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 80 : 120
     }
     
     
@@ -148,7 +157,7 @@ class ShoppingTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if indexPath.section != 0 {
-            if editingStyle == .delete {
+            if editingStyle == .delete {                
                 shoppingListManager.removeMemo(at: indexPath.row)
                 tableView.reloadData()
             }
@@ -177,7 +186,8 @@ class ShoppingTableViewController: UITableViewController {
 extension ShoppingTableViewController: ShoppingDataDelegate {
     
     func addMemo(title: String) {
-        shoppingListManager.addMemo(title: title)
+        shoppingListManager.addMemo(title: title, image: selectedImage)
+        selectedImage = nil
         tableView.reloadData()
     }
     
@@ -220,9 +230,9 @@ extension ShoppingTableViewController: PHPickerViewControllerDelegate {
             itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
                 guard let selectedImage = image as? UIImage else { return }
                 
-                self?.selectedImage = selectedImage
-                
                 DispatchQueue.main.async {
+                    self?.selectedImage = selectedImage
+                    self?.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .fade)
                     self?.dismiss(animated: true)
                 }
             }
