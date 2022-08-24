@@ -19,10 +19,10 @@ class ShoppingTableViewCell: UITableViewCell {
 
     // MARK: - Outlet
     @IBOutlet weak var checkMarkButton: UIButton!
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var starButton: UIButton!
+    @IBOutlet weak var shoppingImageView: UIImageView!
+    
     
     var delegate: ButtonActionDelegate?
     var index: Int?

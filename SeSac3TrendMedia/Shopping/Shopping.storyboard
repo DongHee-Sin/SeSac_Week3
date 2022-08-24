@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="syD-TD-rB4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -41,18 +40,27 @@
                                                 <action selector="shoppingTextFieldReturn:" destination="8MD-qd-TTW" eventType="editingDidEndOnExit" id="Vk6-Ji-Y4E"/>
                                             </connections>
                                         </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4t7-aC-ptt">
+                                            <rect key="frame" x="240.5" y="15" width="50" height="34"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="photo" catalog="system"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="LMg-8X-vFp" secondAttribute="bottom" constant="15" id="3Q8-Vb-kVy"/>
+                                        <constraint firstAttribute="bottom" secondItem="4t7-aC-ptt" secondAttribute="bottom" constant="15" id="4Hg-wf-tbp"/>
+                                        <constraint firstItem="4t7-aC-ptt" firstAttribute="top" secondItem="H5G-o5-F3D" secondAttribute="top" constant="15" id="4KC-11-qU2"/>
                                         <constraint firstAttribute="trailing" secondItem="LMg-8X-vFp" secondAttribute="trailing" constant="20" id="81J-Xo-FgD"/>
                                         <constraint firstAttribute="bottom" secondItem="y7q-g4-dbI" secondAttribute="bottom" constant="15" id="FlC-dA-pF0"/>
                                         <constraint firstItem="LMg-8X-vFp" firstAttribute="top" secondItem="H5G-o5-F3D" secondAttribute="top" constant="15" id="MpL-gb-Hwn"/>
-                                        <constraint firstItem="LMg-8X-vFp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y7q-g4-dbI" secondAttribute="trailing" constant="20" id="bvY-mu-oEa"/>
+                                        <constraint firstItem="LMg-8X-vFp" firstAttribute="leading" secondItem="4t7-aC-ptt" secondAttribute="trailing" constant="15" id="RYU-x6-JMu"/>
+                                        <constraint firstItem="4t7-aC-ptt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y7q-g4-dbI" secondAttribute="trailing" constant="15" id="YdB-WA-gRn"/>
                                         <constraint firstItem="y7q-g4-dbI" firstAttribute="top" secondItem="H5G-o5-F3D" secondAttribute="top" constant="15" id="k1a-ja-818"/>
                                         <constraint firstItem="y7q-g4-dbI" firstAttribute="leading" secondItem="H5G-o5-F3D" secondAttribute="leading" constant="20" id="rqd-sA-VDj"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="imageButton" destination="4t7-aC-ptt" id="0cN-oH-lAB"/>
                                     <outlet property="shoppingTextField" destination="y7q-g4-dbI" id="MIf-gh-G0Q"/>
                                 </connections>
                             </tableViewCell>
@@ -72,35 +80,45 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojm-6y-m1z">
-                                            <rect key="frame" x="70" y="15" width="37.5" height="26"/>
+                                            <rect key="frame" x="110" y="15" width="37.5" height="26"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXp-nA-vg0">
-                                            <rect key="frame" x="324" y="15" width="30" height="21"/>
+                                            <rect key="frame" x="65" y="15" width="30" height="26"/>
                                             <color key="tintColor" systemColor="labelColor"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <connections>
                                                 <action selector="importantButtonTapped:" destination="ay7-mN-rPo" eventType="touchUpInside" id="1IF-31-xIR"/>
                                             </connections>
                                         </button>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BrS-2I-Mt4">
+                                            <rect key="frame" x="323" y="5" width="46" height="46"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="BrS-2I-Mt4" secondAttribute="height" multiplier="1:1" id="5qC-Mt-kbD"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="BrS-2I-Mt4" secondAttribute="trailing" constant="5" id="2LM-tj-olZ"/>
                                         <constraint firstItem="21x-Ea-i60" firstAttribute="leading" secondItem="wW3-jn-rIJ" secondAttribute="leading" constant="20" id="9HB-U4-nhl"/>
-                                        <constraint firstItem="Ojm-6y-m1z" firstAttribute="leading" secondItem="21x-Ea-i60" secondAttribute="trailing" constant="20" id="AGQ-H2-tAl"/>
-                                        <constraint firstAttribute="bottom" secondItem="HXp-nA-vg0" secondAttribute="bottom" constant="20" id="Ng1-k4-60p"/>
+                                        <constraint firstItem="HXp-nA-vg0" firstAttribute="leading" secondItem="21x-Ea-i60" secondAttribute="trailing" constant="15" id="9lc-cS-TLw"/>
+                                        <constraint firstItem="Ojm-6y-m1z" firstAttribute="leading" secondItem="HXp-nA-vg0" secondAttribute="trailing" constant="15" id="Glk-Vl-sOw"/>
+                                        <constraint firstAttribute="bottom" secondItem="HXp-nA-vg0" secondAttribute="bottom" constant="15" id="IB6-0p-nlu"/>
+                                        <constraint firstItem="HXp-nA-vg0" firstAttribute="top" secondItem="wW3-jn-rIJ" secondAttribute="top" constant="15" id="ILp-1j-knm"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ojm-6y-m1z" secondAttribute="bottom" constant="15" id="Nax-KJ-W5w"/>
                                         <constraint firstItem="21x-Ea-i60" firstAttribute="top" secondItem="wW3-jn-rIJ" secondAttribute="top" constant="15" id="OcA-kb-QY6"/>
-                                        <constraint firstAttribute="bottom" secondItem="Ojm-6y-m1z" secondAttribute="bottom" constant="15" id="RKk-qk-hMP"/>
-                                        <constraint firstItem="Ojm-6y-m1z" firstAttribute="top" secondItem="wW3-jn-rIJ" secondAttribute="top" constant="15" id="cP3-hs-2qH"/>
-                                        <constraint firstItem="HXp-nA-vg0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ojm-6y-m1z" secondAttribute="trailing" constant="20" id="dPf-g6-8Ux"/>
-                                        <constraint firstItem="HXp-nA-vg0" firstAttribute="top" secondItem="wW3-jn-rIJ" secondAttribute="top" constant="15" id="hEe-nk-6wq"/>
-                                        <constraint firstAttribute="trailing" secondItem="HXp-nA-vg0" secondAttribute="trailing" constant="20" id="rCI-di-R1E"/>
+                                        <constraint firstAttribute="bottom" secondItem="BrS-2I-Mt4" secondAttribute="bottom" constant="5" id="Olb-Pt-k8X"/>
+                                        <constraint firstItem="Ojm-6y-m1z" firstAttribute="top" secondItem="wW3-jn-rIJ" secondAttribute="top" constant="15" id="VpC-kM-tbc"/>
+                                        <constraint firstItem="BrS-2I-Mt4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ojm-6y-m1z" secondAttribute="trailing" constant="15" id="oNn-AM-Aya"/>
+                                        <constraint firstItem="BrS-2I-Mt4" firstAttribute="top" secondItem="wW3-jn-rIJ" secondAttribute="top" constant="5" id="pR7-EG-gYb"/>
                                         <constraint firstAttribute="bottom" secondItem="21x-Ea-i60" secondAttribute="bottom" constant="15" id="xQC-EF-gGq"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="checkMarkButton" destination="21x-Ea-i60" id="F02-WS-WxI"/>
+                                    <outlet property="shoppingImageView" destination="BrS-2I-Mt4" id="Y39-qx-5Bc"/>
                                     <outlet property="starButton" destination="HXp-nA-vg0" id="9Dp-gc-Coo"/>
                                     <outlet property="titleLabel" destination="Ojm-6y-m1z" id="F9j-Ot-Tm0"/>
                                 </connections>
@@ -115,7 +133,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJ6-7X-Aev" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.75362318840587" y="160.71428571428569"/>
+            <point key="canvasLocation" x="992.75362318840587" y="160.04464285714286"/>
         </scene>
         <!--Shopping Detail View Controller-->
         <scene sceneID="NN4-dg-GeK">
@@ -393,6 +411,7 @@
     </scenes>
     <resources>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

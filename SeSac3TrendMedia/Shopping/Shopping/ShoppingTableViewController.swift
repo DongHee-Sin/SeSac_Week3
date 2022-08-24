@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import PhotosUI
 
 
 protocol ShoppingDataDelegate {
     func addMemo(title: String)
     func removeMemo(at index: Int)
+    
+    func selectImage()
 }
 
 
@@ -19,6 +22,17 @@ class ShoppingTableViewController: UITableViewController {
     // MARK: - Propertys
     var shoppingListManager = ShoppingListManager()
 
+    var phpicker: PHPickerViewController = {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1
+        configuration.filter = .images
+        
+        let phpickerVC = PHPickerViewController(configuration: configuration)
+        
+        return phpickerVC
+    }()
+    
+    var selectedImage: UIImage?
     
     
     // MARK: - View Did Load
@@ -32,6 +46,8 @@ class ShoppingTableViewController: UITableViewController {
    
     // MARK: - Methods
     func initialSetting() {
+        phpicker.delegate = self
+        
         tableView.keyboardDismissMode = .onDrag
         
         setBarButton()
@@ -62,10 +78,11 @@ class ShoppingTableViewController: UITableViewController {
                                             image: UIImage(systemName: "arrow.up.arrow.down.circle"),
                                             primaryAction: nil,
                                             menu: UIMenu(title: "정렬 기준 선택", subtitle: nil, image: nil, identifier: nil, options: .displayInline, children: [sortByTitle, sortByImportant, sortByFinished, defaultSort]))
-        
+
         sortBarButton.tintColor = .darkGray
         
         navigationItem.rightBarButtonItem = sortBarButton
+        
     }
     
     
@@ -100,7 +117,12 @@ class ShoppingTableViewController: UITableViewController {
             cell.selectionStyle = .none
             cell.delegate = self
             
+            if let selectedImage = selectedImage {
+                cell.imageButton.setImage(selectedImage, for: .normal)
+            }
+            
             return cell
+            
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell", for: indexPath) as! ShoppingTableViewCell
             
@@ -135,6 +157,8 @@ class ShoppingTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.section != 0 else { return }
+        
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "ShoppingDetailViewController") as? ShoppingDetailViewController else {
             return
         }
@@ -151,6 +175,7 @@ class ShoppingTableViewController: UITableViewController {
 
 // MARK: - CR Delegate
 extension ShoppingTableViewController: ShoppingDataDelegate {
+    
     func addMemo(title: String) {
         shoppingListManager.addMemo(title: title)
         tableView.reloadData()
@@ -159,6 +184,12 @@ extension ShoppingTableViewController: ShoppingDataDelegate {
     func removeMemo(at index: Int) {
         shoppingListManager.removeMemo(at: index)
         tableView.reloadData()
+    }
+    
+    
+    
+    func selectImage() {
+        present(phpicker, animated: true)
     }
     
 }
@@ -176,4 +207,27 @@ extension ShoppingTableViewController: ButtonActionDelegate {
         shoppingListManager.importantTapped(index: index)
         tableView.reloadData()
     }
+}
+
+
+
+
+// MARK: - PHPicker
+extension ShoppingTableViewController: PHPickerViewControllerDelegate {
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                guard let selectedImage = image as? UIImage else { return }
+                
+                self?.selectedImage = selectedImage
+                
+                DispatchQueue.main.async {
+                    self?.dismiss(animated: true)
+                }
+            }
+        }
+    }
+    
+    
 }
