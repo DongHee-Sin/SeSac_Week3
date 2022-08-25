@@ -50,6 +50,13 @@ class ShoppingTableViewController: UITableViewController {
     
     
     func setBarButton() {
+        
+        // left
+        let backupButton = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(backupButtonTapped))
+        navigationItem.leftBarButtonItem = backupButton
+        
+        
+        // right
         let sortByTitle = UIAction(title: "Title 기준 정렬", image: UIImage(systemName: "textformat"), identifier: nil) { [weak self] _ in
             guard let self = self else { return }
             self.selectedSortBy(by: .title)
@@ -74,10 +81,18 @@ class ShoppingTableViewController: UITableViewController {
                                             image: UIImage(systemName: "arrow.up.arrow.down.circle"),
                                             primaryAction: nil,
                                             menu: UIMenu(title: "정렬 기준 선택", subtitle: nil, image: nil, identifier: nil, options: .displayInline, children: [sortByTitle, sortByImportant, sortByFinished, defaultSort]))
-
-        sortBarButton.tintColor = .darkGray
         
         navigationItem.rightBarButtonItem = sortBarButton
+        
+        navigationController?.navigationBar.tintColor = .darkGray
+    }
+    
+    
+    @objc func backupButtonTapped() {
+        let vc = BackUpViewController()
+        let navi = UINavigationController(rootViewController: vc)
+        navi.modalPresentationStyle = .fullScreen
+        present(navi, animated: true)
     }
     
     
