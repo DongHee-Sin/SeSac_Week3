@@ -33,6 +33,7 @@ class ShoppingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        createImageDirectory()
         initialSetting()
     }
 
@@ -40,6 +41,27 @@ class ShoppingTableViewController: UITableViewController {
    
     
     // MARK: - Methods
+    func createImageDirectory() {
+        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            showAlert(title: "Document 위치에 오류가 있습니다.")
+            return
+        }
+        
+        let directoryPath = path.appendingPathComponent("image")
+        
+        if !FileManager.default.fileExists(atPath: directoryPath.path) {
+            do {
+                try FileManager.default.createDirectory(at: directoryPath, withIntermediateDirectories: true)
+            }
+            catch {
+                showAlert(title: "Create Image Directory Failed")
+            }
+        }else {
+            print("image directory 이미 있다!")
+        }
+    }
+    
+    
     func initialSetting() {
         phpicker.delegate = self
         
