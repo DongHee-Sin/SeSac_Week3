@@ -30,6 +30,7 @@ struct ShoppingListManager {
     
     
     
+    
     // MARK: - Init
     init() {
         shoppingList = localRealm.objects(Shopping.self)
@@ -38,8 +39,8 @@ struct ShoppingListManager {
     
     
     
-    // MARK: - Methods
     
+    // MARK: - Methods - Realm
     mutating func readData() {
         switch currentSortBy {
         case .title:
@@ -99,7 +100,8 @@ struct ShoppingListManager {
     
     
     
-    // Document
+    
+    // MARK: - Methods - Document
     func saveImageToDocument(fileName: String, image: UIImage) {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         let fileURL = documentDirectory.appendingPathComponent("\(fileName).jpg")

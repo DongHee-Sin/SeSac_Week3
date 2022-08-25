@@ -7,6 +7,15 @@
 
 import UIKit
 
+
+protocol ShoppingDataDelegate {
+    func addMemo(title: String)
+    func removeMemo(at index: Int)
+    
+    func selectImage()
+}
+
+
 class TextFieldTableViewCell: UITableViewCell {
 
     // Delegate
@@ -21,6 +30,8 @@ class TextFieldTableViewCell: UITableViewCell {
     // MARK: - Awake From Nib
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.selectionStyle = .none
         
         shoppingTextField.placeholder = "무엇을 구매하실 건가요?"
         shoppingTextField.borderStyle = .none
@@ -59,10 +70,10 @@ class TextFieldTableViewCell: UITableViewCell {
     
     
     func delegateAddingMemo() {
-        guard let title = shoppingTextField.text else {
+        guard shoppingTextField.text != "" else {
             return
         }
-        delegate?.addMemo(title: title)
+        delegate?.addMemo(title: shoppingTextField.text!)
         shoppingTextField.text = nil
     }
 }

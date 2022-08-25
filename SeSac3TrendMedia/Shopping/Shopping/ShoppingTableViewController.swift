@@ -9,14 +9,6 @@ import UIKit
 import PhotosUI
 
 
-protocol ShoppingDataDelegate {
-    func addMemo(title: String)
-    func removeMemo(at index: Int)
-    
-    func selectImage()
-}
-
-
 class ShoppingTableViewController: UITableViewController {
     
     // MARK: - Propertys
@@ -28,11 +20,13 @@ class ShoppingTableViewController: UITableViewController {
         configuration.filter = .images
         
         let phpickerVC = PHPickerViewController(configuration: configuration)
-        
+
         return phpickerVC
     }()
     
     var selectedImage: UIImage?
+    
+    
     
     
     // MARK: - View Did Load
@@ -44,6 +38,7 @@ class ShoppingTableViewController: UITableViewController {
 
     
    
+    
     // MARK: - Methods
     func initialSetting() {
         phpicker.delegate = self
@@ -52,6 +47,7 @@ class ShoppingTableViewController: UITableViewController {
         
         setBarButton()
     }
+    
     
     func setBarButton() {
         let sortByTitle = UIAction(title: "Title 기준 정렬", image: UIImage(systemName: "textformat"), identifier: nil) { [weak self] _ in
@@ -82,7 +78,6 @@ class ShoppingTableViewController: UITableViewController {
         sortBarButton.tintColor = .darkGray
         
         navigationItem.rightBarButtonItem = sortBarButton
-        
     }
     
     
@@ -100,6 +95,7 @@ class ShoppingTableViewController: UITableViewController {
         return 2
     }
     
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
@@ -114,7 +110,6 @@ class ShoppingTableViewController: UITableViewController {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as! TextFieldTableViewCell
             
-            cell.selectionStyle = .none
             cell.delegate = self
             
             if let selectedImage = selectedImage {
@@ -130,15 +125,9 @@ class ShoppingTableViewController: UITableViewController {
             
             let data = shoppingListManager.getMemo(at: indexPath.row)
         
-            cell.selectionStyle = .none
-            cell.titleLabel.text = data.title
-            cell.checkMarkButton.setImage(data.isFinish ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
-            cell.starButton.setImage(data.isImportant ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
-            
             cell.delegate = self
             cell.index = indexPath.row
-            
-            cell.loadImageFromDocument(fileName: "\(data.objectId)")
+            cell.updateCell(data: data)
             
             return cell
         }

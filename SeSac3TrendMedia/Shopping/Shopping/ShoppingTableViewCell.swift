@@ -24,16 +24,21 @@ class ShoppingTableViewCell: UITableViewCell {
     @IBOutlet weak var shoppingImageView: UIImageView!
     
     
+    
     var delegate: ButtonActionDelegate?
     var index: Int?
     
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.selectionStyle = .none
     }
     
     
+    
+    // MARK: - Methods
     @IBAction func finishButtonTapped(_ sender: UIButton) {
         delegate?.finishButtonTapped(index: index!)
     }
@@ -41,6 +46,14 @@ class ShoppingTableViewCell: UITableViewCell {
     
     @IBAction func importantButtonTapped(_ sender: UIButton) {
         delegate?.importantButtonTapped(index: index!)
+    }
+    
+    
+    func updateCell(data: Shopping) {
+        titleLabel.text = data.title
+        checkMarkButton.setImage(data.isFinish ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
+        starButton.setImage(data.isImportant ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
+        loadImageFromDocument(fileName: "\(data.objectId)")
     }
     
     

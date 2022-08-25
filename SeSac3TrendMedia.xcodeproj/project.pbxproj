@@ -112,8 +112,8 @@
 			children = (
 				D0C25AC9288682F4002AB8E8 /* ShoppingListManager.swift */,
 				D086934E28867E160003FF88 /* ShoppingTableViewController.swift */,
-				D0C25ACB28868A0A002AB8E8 /* ShoppingTableViewCell.swift */,
 				D0C25AD22886B74B002AB8E8 /* TextFieldTableViewCell.swift */,
+				D0C25ACB28868A0A002AB8E8 /* ShoppingTableViewCell.swift */,
 				D0F7105828B4D63000378D15 /* ShoppingDetailViewController.swift */,
 			);
 			path = Shopping;

@@ -9,6 +9,7 @@ import UIKit
 
 class ShoppingDetailViewController: UIViewController {
 
+    // MARK: - Propertys
     var shoppingData: Shopping?
     
     @IBOutlet weak var isFinishButton: UIButton!
@@ -17,6 +18,9 @@ class ShoppingDetailViewController: UIViewController {
     @IBOutlet weak var shoppingImageView: UIImageView!
     
     
+    
+    
+    // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +30,9 @@ class ShoppingDetailViewController: UIViewController {
     }
     
     
+    
+    
+    // MARK: - Methods
     func updateUI(data: Shopping) {
         navigationItem.title = data.title
         isFinishButton.setImage(data.isFinish ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
