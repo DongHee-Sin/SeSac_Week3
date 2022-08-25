@@ -6,7 +6,10 @@
 //
 
 import UIKit
+
+import JGProgressHUD
 import Zip
+
 
 class BackUpViewController: UIViewController {
 
@@ -14,6 +17,13 @@ class BackUpViewController: UIViewController {
     var backupList: [String] = []
     
     let dateManager = DateFormatterManager()
+    
+    let hud: JGProgressHUD = {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Loading"
+        hud.detailTextLabel.text = "n% Complete"
+        return hud
+    }()
     
     
     
@@ -55,6 +65,18 @@ class BackUpViewController: UIViewController {
     
     @objc func dismissButtonTapped() {
         dismiss(animated: true)
+    }
+    
+    
+    func showHUD() {
+        view.isUserInteractionEnabled = false
+        hud.show(in: self.view)
+    }
+    
+    
+    func dismissHUD() {
+        view.isUserInteractionEnabled = true
+        hud.dismiss(animated: true)
     }
 }
 
@@ -144,13 +166,17 @@ extension BackUpViewController: UIDocumentPickerDelegate {
     
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        showHUD()
+        
         // selectedFileURL : 사용자가 document에서 선택한 zip파일의 경로
         guard let selectedFileURL = urls.first else {
+            dismissHUD()
             showAlert(title: "선택하신 파일을 찾을 수 없습니다.")
             return
         }
         
         guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            dismissHUD()
             showAlert(title: "Document 위치에 오류가 있습니다.")
             return
         }
@@ -166,6 +192,7 @@ extension BackUpViewController: UIDocumentPickerDelegate {
                 restoreFile(fileURL: sandboxFileURL, documentURL: path)
             }
             catch {
+                dismissHUD()
                 showAlert(title: "백업 데이터 복사에 실패했습니다.")
             }
         }
@@ -174,9 +201,10 @@ extension BackUpViewController: UIDocumentPickerDelegate {
     
     func restoreFile(fileURL: URL, documentURL: URL) {
         do {
-            try Zip.unzipFile(fileURL, destination: documentURL, overwrite: true, password: nil, progress: { progress in
-                print("progress : \(progress)")
+            try Zip.unzipFile(fileURL, destination: documentURL, overwrite: true, password: nil, progress: { [weak self] progress in
+                self?.hud.detailTextLabel.text = "\(progress)% Complete"
             }, fileOutputHandler: { [weak self] unzippedFile in
+                self?.dismissHUD()
                 self?.showAlert(title: "복구가 완료되었습니다.", handler: { _ in
                     let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "ShoppingTableViewController")
                     let navi = UINavigationController(rootViewController: vc)
@@ -185,6 +213,7 @@ extension BackUpViewController: UIDocumentPickerDelegate {
             })
         }
         catch {
+            dismissHUD()
             showAlert(title: "압축 해제에 실패했습니다.")
         }
     }
