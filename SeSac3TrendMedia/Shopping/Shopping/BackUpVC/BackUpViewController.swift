@@ -158,40 +158,34 @@ extension BackUpViewController: UIDocumentPickerDelegate {
         let sandboxFileURL = path.appendingPathComponent(selectedFileURL.lastPathComponent)
         
         if FileManager.default.fileExists(atPath: sandboxFileURL.path) {
-            do {
-                try Zip.unzipFile(sandboxFileURL, destination: path, overwrite: true, password: nil, progress: { progress in
-                    print("progress : \(progress)")
-                }, fileOutputHandler: { [weak self] unzippedFile in
-                    self?.showAlert(title: "복구가 완료되었습니다.", handler: { [weak self] _ in
-                        let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "ShoppingTableViewController")
-                        let navi = UINavigationController(rootViewController: vc)
-                        self?.changeRootViewController(to: navi)
-                    })
-                })
-            }
-            catch {
-                showAlert(title: "압축 해제에 실패했습니다.")
-            }
-            
+            restoreFile(fileURL: sandboxFileURL, documentURL: path)
         }
         else {
             do {
                 try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
-                
-                try Zip.unzipFile(sandboxFileURL, destination: path, overwrite: true, password: nil, progress: { progress in
-                    print("progress : \(progress)")
-                }, fileOutputHandler: { [weak self] unzippedFile in
-                    self?.showAlert(title: "복구가 완료되었습니다.", handler: { _ in
-                        let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "ShoppingTableViewController")
-                        let navi = UINavigationController(rootViewController: vc)
-                        self?.changeRootViewController(to: navi)
-                    })
-                })
+                restoreFile(fileURL: sandboxFileURL, documentURL: path)
             }
             catch {
-                showAlert(title: "압축 해제에 실패했습니다.")
+                showAlert(title: "백업 데이터 복사에 실패했습니다.")
             }
-            
+        }
+    }
+    
+    
+    func restoreFile(fileURL: URL, documentURL: URL) {
+        do {
+            try Zip.unzipFile(fileURL, destination: documentURL, overwrite: true, password: nil, progress: { progress in
+                print("progress : \(progress)")
+            }, fileOutputHandler: { [weak self] unzippedFile in
+                self?.showAlert(title: "복구가 완료되었습니다.", handler: { _ in
+                    let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "ShoppingTableViewController")
+                    let navi = UINavigationController(rootViewController: vc)
+                    self?.changeRootViewController(to: navi)
+                })
+            })
+        }
+        catch {
+            showAlert(title: "압축 해제에 실패했습니다.")
         }
     }
 }
