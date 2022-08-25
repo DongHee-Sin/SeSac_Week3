@@ -34,7 +34,7 @@ class BackUpView: UIView {
     
     let restoreButton: UIButton = {
         let view = UIButton()
-        view.setTitle("백업하기", for: .normal)
+        view.setTitle("복구하기", for: .normal)
         view.titleLabel?.font = .boldSystemFont(ofSize: 17)
         view.titleLabel?.textColor = .white
         view.backgroundColor = .darkGray

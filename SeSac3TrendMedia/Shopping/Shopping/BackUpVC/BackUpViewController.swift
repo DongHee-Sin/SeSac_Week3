@@ -41,11 +41,14 @@ class BackUpViewController: UIViewController {
         
         backupView.backupButton.addTarget(self, action: #selector(backupButtonTapped), for: .touchUpInside)
         backupView.restoreButton.addTarget(self, action: #selector(restoreButtonTapped), for: .touchUpInside)
+        
+        setNavigationBar()
     }
     
     
     func setNavigationBar() {
         let dismissButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(dismissButtonTapped))
+        navigationController?.navigationBar.tintColor = .darkGray
         navigationItem.leftBarButtonItem = dismissButton
     }
     
@@ -120,7 +123,75 @@ extension BackUpViewController {
     
     // 복구
     @objc func restoreButtonTapped() {
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [.zip], asCopy: true)
         
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        
+        present(documentPicker, animated: true)
+    }
+}
+
+
+
+
+// MARK: - DocumentPicker Protocol
+extension BackUpViewController: UIDocumentPickerDelegate {
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print(#function)
     }
     
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        // selectedFileURL : 사용자가 document에서 선택한 zip파일의 경로
+        guard let selectedFileURL = urls.first else {
+            showAlert(title: "선택하신 파일을 찾을 수 없습니다.")
+            return
+        }
+        
+        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            showAlert(title: "Document 위치에 오류가 있습니다.")
+            return
+        }
+        
+        let sandboxFileURL = path.appendingPathComponent(selectedFileURL.lastPathComponent)
+        
+        if FileManager.default.fileExists(atPath: sandboxFileURL.path) {
+            do {
+                try Zip.unzipFile(sandboxFileURL, destination: path, overwrite: true, password: nil, progress: { progress in
+                    print("progress : \(progress)")
+                }, fileOutputHandler: { [weak self] unzippedFile in
+                    self?.showAlert(title: "복구가 완료되었습니다.", handler: { [weak self] _ in
+                        let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "ShoppingTableViewController")
+                        let navi = UINavigationController(rootViewController: vc)
+                        self?.changeRootViewController(to: navi)
+                    })
+                })
+            }
+            catch {
+                showAlert(title: "압축 해제에 실패했습니다.")
+            }
+            
+        }
+        else {
+            do {
+                try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
+                
+                try Zip.unzipFile(sandboxFileURL, destination: path, overwrite: true, password: nil, progress: { progress in
+                    print("progress : \(progress)")
+                }, fileOutputHandler: { [weak self] unzippedFile in
+                    self?.showAlert(title: "복구가 완료되었습니다.", handler: { _ in
+                        let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "ShoppingTableViewController")
+                        let navi = UINavigationController(rootViewController: vc)
+                        self?.changeRootViewController(to: navi)
+                    })
+                })
+            }
+            catch {
+                showAlert(title: "압축 해제에 실패했습니다.")
+            }
+            
+        }
+    }
 }
