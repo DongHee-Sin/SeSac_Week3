@@ -40,7 +40,7 @@
                                                 <action selector="shoppingTextFieldReturn:" destination="8MD-qd-TTW" eventType="editingDidEndOnExit" id="Vk6-Ji-Y4E"/>
                                             </connections>
                                         </textField>
-                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4t7-aC-ptt">
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4t7-aC-ptt">
                                             <rect key="frame" x="256.5" y="15" width="34" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="4t7-aC-ptt" secondAttribute="height" multiplier="1:1" id="fya-rs-Tj9"/>

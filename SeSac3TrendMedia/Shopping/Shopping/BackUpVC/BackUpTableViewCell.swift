@@ -44,6 +44,8 @@ class BackUpTableViewCell: UITableViewCell {
     
     
     
+    
+    // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -81,6 +83,12 @@ class BackUpTableViewCell: UITableViewCell {
             make.leading.equalTo(fileImageView.snp.trailing).offset(12)
             make.trailing.equalTo(self).offset(-12)
         }
+    }
+    
+    
+    func updateCell(backupFileURL url: URL, size: String) {
+        titleLabel.text = url.lastPathComponent
+        sizeLabel.text = size
     }
 }
 

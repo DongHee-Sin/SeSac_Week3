@@ -14,15 +14,22 @@ import Zip
 class BackUpViewController: UIViewController {
 
     // MARK: - Propertys
-    var backupList: [String] = []
-    
     let dateManager = DateFormatterManager()
+    
+    lazy var backupList: [URL] = fetchDocumentZipFile() ?? []
     
     let hud: JGProgressHUD = {
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Loading"
         hud.detailTextLabel.text = "n% Complete"
         return hud
+    }()
+    
+    let fileByteCountFormatter: ByteCountFormatter = {
+        let bcf = ByteCountFormatter()
+        bcf.allowedUnits = [.useKB, .useMB]
+        bcf.countStyle = .file
+        return bcf
     }()
     
     
@@ -78,6 +85,27 @@ class BackUpViewController: UIViewController {
         view.isUserInteractionEnabled = true
         hud.dismiss(animated: true)
     }
+    
+    
+    // Document에 저장된 파일 리스트 확인하기 (확장자로 구분하여 조회 가능)
+    func fetchDocumentZipFile() -> [URL]? {
+        do {
+            guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
+            
+            let docs = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil)
+            
+            let zip = docs.filter { $0.pathExtension == "zip" }
+            
+            let result = zip.map { path.appendingPathComponent($0.lastPathComponent) }
+            
+            print("result: \(result)")
+            return result
+        }
+        catch {
+            showAlert(title: "Document의 파일 가져오기 실패")
+            return nil
+        }
+    }
 }
 
 
@@ -86,7 +114,7 @@ class BackUpViewController: UIViewController {
 // MARK: - TableView Protocol
 extension BackUpViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return backupList.count
     }
     
     
@@ -94,6 +122,10 @@ extension BackUpViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? BackUpTableViewCell else {
             return UITableViewCell()
         }
+        
+        let fileURL = backupList[indexPath.row]
+        let fileSize = fileByteCountFormatter.string(fromByteCount: FileManager.default.sizeOfFile(atPath: fileURL.path) ?? 0)
+        cell.updateCell(backupFileURL: fileURL, size: fileSize)
         
         return cell
     }
