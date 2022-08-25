@@ -59,7 +59,8 @@ class ShoppingTableViewCell: UITableViewCell {
     
     func loadImageFromDocument(fileName: String) {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let fileURL = documentDirectory.appendingPathComponent("\(fileName).jpg")
+        let imageDocumentURL = documentDirectory.appendingPathComponent("image")
+        let fileURL = imageDocumentURL.appendingPathComponent("\(fileName).jpg")
         
         if FileManager.default.fileExists(atPath: fileURL.path) {
             shoppingImageView.image = UIImage(contentsOfFile: fileURL.path)

@@ -118,14 +118,16 @@ extension BackUpViewController {
             showAlert(title: "Document 위치에 오류가 있습니다.")
             return
         }
+        
         let realmPath = path.appendingPathComponent("default.realm")
+        let imagePath = path.appendingPathComponent("image", isDirectory: true)
         
         guard FileManager.default.fileExists(atPath: realmPath.path) else {
             showAlert(title: "백업할 데이터가 없습니다.")
             return
         }
         
-        urlPaths.append(realmPath)
+        urlPaths.append(contentsOf: [realmPath, imagePath])
         
         do {
             let zipFilePath = try Zip.quickZipFiles(urlPaths, fileName: "SeSac\(dateManager.currentDateString)")
@@ -168,7 +170,7 @@ extension BackUpViewController: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         showHUD()
         
-        // selectedFileURL : 사용자가 document에서 선택한 zip파일의 경로
+        // selectedFileURL : 사용자가 document에서 선택한 "zip파일"의 경로
         guard let selectedFileURL = urls.first else {
             dismissHUD()
             showAlert(title: "선택하신 파일을 찾을 수 없습니다.")
@@ -181,9 +183,12 @@ extension BackUpViewController: UIDocumentPickerDelegate {
             return
         }
         
+        // 현재 Sandbox의 Document 경로에 "백업했던 zip파일"의 파일명을 append (현재 Sandbox주소로 업데이트)
         let sandboxFileURL = path.appendingPathComponent(selectedFileURL.lastPathComponent)
         
-        if FileManager.default.fileExists(atPath: sandboxFileURL.path) {
+        
+        // 현재 Sandbox에 동일한 이름의 zip파일이 있는지 확인
+        if FileManager.default.fileExists(atPath: sandboxFileURL.path)  {
             restoreFile(fileURL: sandboxFileURL, documentURL: path)
         }
         else {

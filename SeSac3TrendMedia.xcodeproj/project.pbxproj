@@ -152,6 +152,7 @@
 		D0117FBA28B7636400F057ED /* Model-Manager */ = {
 			isa = PBXGroup;
 			children = (
+				D0C25AC9288682F4002AB8E8 /* ShoppingListManager.swift */,
 				D0117FBB28B7637B00F057ED /* DateFormatterManager.swift */,
 			);
 			path = "Model-Manager";
@@ -160,7 +161,6 @@
 		D01197C928B36DF3001E8755 /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
-				D0C25AC9288682F4002AB8E8 /* ShoppingListManager.swift */,
 				D0117FB428B7516E00F057ED /* MainShoppingVC */,
 				D0117FB328B7512900F057ED /* DetailVC */,
 				D0117FB228B7510200F057ED /* BackUpVC */,
