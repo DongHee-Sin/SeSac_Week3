@@ -16,15 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldTableViewCell" rowHeight="64" id="8MD-qd-TTW" customClass="TextFieldTableViewCell" customModule="SeSac3TrendMedia" customModuleProvider="target">
-                                <rect key="frame" x="20" y="49.5" width="374" height="64"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldTableViewCell" rowHeight="93" id="8MD-qd-TTW" customClass="TextFieldTableViewCell" customModule="SeSac3TrendMedia" customModuleProvider="target">
+                                <rect key="frame" x="20" y="49.5" width="374" height="93"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8MD-qd-TTW" id="H5G-o5-F3D">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="93"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMg-8X-vFp">
-                                            <rect key="frame" x="305.5" y="15" width="48.5" height="34"/>
+                                            <rect key="frame" x="305.5" y="15" width="48.5" height="63"/>
                                             <color key="tintColor" systemColor="labelColor"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="gray" title="추가"/>
@@ -33,7 +33,7 @@
                                             </connections>
                                         </button>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y7q-g4-dbI">
-                                            <rect key="frame" x="20" y="15" width="32" height="34"/>
+                                            <rect key="frame" x="20" y="29.5" width="32" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -41,25 +41,36 @@
                                             </connections>
                                         </textField>
                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4t7-aC-ptt">
-                                            <rect key="frame" x="256.5" y="15" width="34" height="34"/>
+                                            <rect key="frame" x="227.5" y="15" width="63" height="63"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="4t7-aC-ptt" secondAttribute="height" multiplier="1:1" id="fya-rs-Tj9"/>
                                             </constraints>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="photo.circle" catalog="system"/>
                                         </button>
+                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vN-PK-EPJ">
+                                            <rect key="frame" x="154.5" y="15" width="63" height="63"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="calendar" catalog="system"/>
+                                            <connections>
+                                                <action selector="calendarButtonTapped:" destination="8MD-qd-TTW" eventType="touchUpInside" id="nSr-Wj-fpZ"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="9vN-PK-EPJ" secondAttribute="bottom" constant="15" id="2jU-Wg-yHc"/>
+                                        <constraint firstItem="y7q-g4-dbI" firstAttribute="centerY" secondItem="H5G-o5-F3D" secondAttribute="centerY" id="39W-Ty-xk9"/>
                                         <constraint firstAttribute="bottom" secondItem="LMg-8X-vFp" secondAttribute="bottom" constant="15" id="3Q8-Vb-kVy"/>
                                         <constraint firstAttribute="bottom" secondItem="4t7-aC-ptt" secondAttribute="bottom" constant="15" id="4Hg-wf-tbp"/>
                                         <constraint firstItem="4t7-aC-ptt" firstAttribute="top" secondItem="H5G-o5-F3D" secondAttribute="top" constant="15" id="4KC-11-qU2"/>
                                         <constraint firstAttribute="trailing" secondItem="LMg-8X-vFp" secondAttribute="trailing" constant="20" id="81J-Xo-FgD"/>
-                                        <constraint firstAttribute="bottom" secondItem="y7q-g4-dbI" secondAttribute="bottom" constant="15" id="FlC-dA-pF0"/>
+                                        <constraint firstItem="9vN-PK-EPJ" firstAttribute="top" secondItem="H5G-o5-F3D" secondAttribute="top" constant="15" id="8CS-t7-AJ5"/>
                                         <constraint firstItem="LMg-8X-vFp" firstAttribute="top" secondItem="H5G-o5-F3D" secondAttribute="top" constant="15" id="MpL-gb-Hwn"/>
                                         <constraint firstItem="LMg-8X-vFp" firstAttribute="leading" secondItem="4t7-aC-ptt" secondAttribute="trailing" constant="15" id="RYU-x6-JMu"/>
-                                        <constraint firstItem="4t7-aC-ptt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y7q-g4-dbI" secondAttribute="trailing" constant="15" id="YdB-WA-gRn"/>
-                                        <constraint firstItem="y7q-g4-dbI" firstAttribute="top" secondItem="H5G-o5-F3D" secondAttribute="top" constant="15" id="k1a-ja-818"/>
+                                        <constraint firstItem="4t7-aC-ptt" firstAttribute="leading" secondItem="9vN-PK-EPJ" secondAttribute="trailing" constant="10" id="XFn-Q7-X5I"/>
+                                        <constraint firstItem="9vN-PK-EPJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y7q-g4-dbI" secondAttribute="trailing" constant="10" id="e9D-gG-czq"/>
                                         <constraint firstItem="y7q-g4-dbI" firstAttribute="leading" secondItem="H5G-o5-F3D" secondAttribute="leading" constant="20" id="rqd-sA-VDj"/>
+                                        <constraint firstItem="9vN-PK-EPJ" firstAttribute="width" secondItem="9vN-PK-EPJ" secondAttribute="height" multiplier="1:1" id="xrM-gW-YAf"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -68,7 +79,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingTableViewCell" rowHeight="56" id="ay7-mN-rPo" customClass="ShoppingTableViewCell" customModule="SeSac3TrendMedia" customModuleProvider="target">
-                                <rect key="frame" x="20" y="113.5" width="374" height="56"/>
+                                <rect key="frame" x="20" y="142.5" width="374" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ay7-mN-rPo" id="wW3-jn-rIJ">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
@@ -82,7 +93,7 @@
                                                 <action selector="finishButtonTapped:" destination="ay7-mN-rPo" eventType="touchUpInside" id="YRu-78-msE"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojm-6y-m1z">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojm-6y-m1z">
                                             <rect key="frame" x="110" y="15" width="37.5" height="26"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
@@ -189,6 +200,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5p6-80-qjn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1857" y="161"/>
+        </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="FzJ-ed-1vW">
+            <objects>
+                <viewController storyboardIdentifier="CalendarViewController" id="ydG-TH-98o" customClass="CalendarViewController" customModule="SeSac3TrendMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ang-uU-0lS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vow-aB-d5y" customClass="FSCalendar">
+                                <rect key="frame" x="12" y="56" width="390" height="292.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vow-aB-d5y" secondAttribute="height" multiplier="4:3" id="Szp-Rq-WbC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lY4-eM-CVR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vow-aB-d5y" firstAttribute="leading" secondItem="lY4-eM-CVR" secondAttribute="leading" constant="12" id="9da-qr-UmZ"/>
+                            <constraint firstItem="lY4-eM-CVR" firstAttribute="trailing" secondItem="vow-aB-d5y" secondAttribute="trailing" constant="12" id="RWx-tE-mjK"/>
+                            <constraint firstItem="vow-aB-d5y" firstAttribute="top" secondItem="lY4-eM-CVR" secondAttribute="top" constant="12" id="rm1-DR-sd4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="calendarView" destination="vow-aB-d5y" id="4H2-IS-X5g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JOb-P0-jRI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2688" y="161"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="5H4-V7-Y9C">
@@ -410,6 +453,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="photo.circle" catalog="system" width="128" height="121"/>
         <image name="star" catalog="system" width="128" height="116"/>

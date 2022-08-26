@@ -27,6 +27,8 @@ class ShoppingTableViewController: UITableViewController {
     
     var selectedImage: UIImage?
     
+    var selectedDate: String?
+    
     var notificationToken: NotificationToken?
     
     
@@ -227,12 +229,19 @@ class ShoppingTableViewController: UITableViewController {
 
 
 
-// MARK: - CR Delegate
+// MARK: - ShoppingData Delegate
 extension ShoppingTableViewController: ShoppingDataDelegate {
     
     func addMemo(title: String) {
+        var title = title
+        if let selectedDate = selectedDate {
+            title.append("\n\(selectedDate)")
+        }
+        
         shoppingListManager.addMemo(title: title, image: selectedImage)
+        
         selectedImage = nil
+        selectedDate = nil
     }
     
     func removeMemo(at index: Int) {
@@ -243,6 +252,21 @@ extension ShoppingTableViewController: ShoppingDataDelegate {
     
     func selectImage() {
         present(phpicker, animated: true)
+    }
+    
+    func selectDate() {
+        let sb = UIStoryboard(name: "Shopping", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "CalendarViewController") as? CalendarViewController else { return }
+        
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        
+        vc.handler = { [weak self] (date: String) in
+            self?.selectedDate = date
+        }
+        
+        present(vc, animated: true)
     }
     
 }

@@ -13,6 +13,8 @@ protocol ShoppingDataDelegate {
     func removeMemo(at index: Int)
     
     func selectImage()
+    
+    func selectDate()
 }
 
 
@@ -66,6 +68,10 @@ class TextFieldTableViewCell: UITableViewCell {
     
     @IBAction func shoppingTextFieldReturn(_ sender: UITextField) {
         delegateAddingMemo()
+    }
+    
+    @IBAction func calendarButtonTapped(_ sender: UIButton) {
+        delegate?.selectDate()
     }
     
     

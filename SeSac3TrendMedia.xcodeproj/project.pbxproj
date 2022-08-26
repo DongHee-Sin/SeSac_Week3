@@ -26,6 +26,7 @@
 		D01E40FD28B7CFDE004CA127 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E40FC28B7CFDE004CA127 /* FileManager+Extension.swift */; };
 		D01E938F288549B50030FAD9 /* KakaoSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E938E288549B50030FAD9 /* KakaoSettingModel.swift */; };
 		D025511D28B8DB8600012B56 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = D025511C28B8DB8600012B56 /* FSCalendar */; };
+		D02B054828B922D20057B559 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02B054728B922D20057B559 /* CalendarViewController.swift */; };
 		D07CB8EE288A3F8B0068F15B /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07CB8ED288A3F8B0068F15B /* TestViewController.swift */; };
 		D086934D28867DD00003FF88 /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D086934C28867DD00003FF88 /* Shopping.storyboard */; };
 		D086934F28867E160003FF88 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086934E28867E160003FF88 /* ShoppingTableViewController.swift */; };
@@ -74,6 +75,7 @@
 		D01E40FA28B7CC98004CA127 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		D01E40FC28B7CFDE004CA127 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		D01E938E288549B50030FAD9 /* KakaoSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoSettingModel.swift; sourceTree = "<group>"; };
+		D02B054728B922D20057B559 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		D07CB8ED288A3F8B0068F15B /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D086934C28867DD00003FF88 /* Shopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shopping.storyboard; sourceTree = "<group>"; };
 		D086934E28867E160003FF88 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		D01197C928B36DF3001E8755 /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
+				D02B054628B922C00057B559 /* FSCalendarVC */,
 				D0117FB428B7516E00F057ED /* MainShoppingVC */,
 				D0117FB328B7512900F057ED /* DetailVC */,
 				D0117FB228B7510200F057ED /* BackUpVC */,
@@ -180,6 +183,14 @@
 				D01197D128B3725A001E8755 /* RealmModel.swift */,
 			);
 			path = "Realm-Database";
+			sourceTree = "<group>";
+		};
+		D02B054628B922C00057B559 /* FSCalendarVC */ = {
+			isa = PBXGroup;
+			children = (
+				D02B054728B922D20057B559 /* CalendarViewController.swift */,
+			);
+			path = FSCalendarVC;
 			sourceTree = "<group>";
 		};
 		D086934728867D4A0003FF88 /* Trend & BucketList */ = {
@@ -432,6 +443,7 @@
 			files = (
 				D0C25AD32886B74B002AB8E8 /* TextFieldTableViewCell.swift in Sources */,
 				D00B28602886453200BCE600 /* UIViewController+Extention.swift in Sources */,
+				D02B054828B922D20057B559 /* CalendarViewController.swift in Sources */,
 				D0C25ACA288682F4002AB8E8 /* ShoppingListManager.swift in Sources */,
 				D0D1865E28879DFC002F9474 /* RecommendCollectionViewCell.swift in Sources */,
 				D0DA44EB2884FE3C00D12714 /* SettingTableViewController.swift in Sources */,

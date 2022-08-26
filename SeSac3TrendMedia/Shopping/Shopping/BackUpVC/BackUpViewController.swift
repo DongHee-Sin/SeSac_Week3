@@ -283,7 +283,7 @@ extension BackUpViewController: UIDocumentPickerDelegate {
             }, fileOutputHandler: { [weak self] unzippedFile in
                 self?.dismissHUD()
                 self?.showAlert(title: "복구가 완료되었습니다.", handler: { _ in
-                    let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "ShoppingTableViewController")
+                    guard let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "ShoppingTableViewController") as? ShoppingTableViewController else { return }
                     let navi = UINavigationController(rootViewController: vc)
                     self?.changeRootViewController(to: navi)
                 })
