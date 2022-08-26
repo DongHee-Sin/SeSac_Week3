@@ -47,10 +47,15 @@ class ShoppingTableViewController: UITableViewController {
     
     // MARK: - Methods
     func setRealmObserver() {
-        let realm = try! Realm()
-        let results = realm.objects(Shopping.self)
-        notificationToken = results.observe { [weak self] _ in
-            self?.tableView.reloadData()
+        do {
+            let realm = try Realm()
+            let results = realm.objects(Shopping.self)
+            notificationToken = results.observe { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+        }
+        catch {
+            showAlert(title: "Realm 인스턴스 생성에 실패했습니다.")
         }
     }
     

@@ -62,12 +62,17 @@ struct ShoppingListManager {
     
     mutating func addMemo(title: String, image: UIImage? = nil) {
         let task = Shopping(title: title)
-        try! localRealm.write {
-            localRealm.add(task)
-        }
         
-        if let image = image {
-            saveImageToDocument(fileName: "\(task.objectId)", image: image)
+        do {
+            try localRealm.write {
+                localRealm.add(task)
+            }
+            if let image = image {
+                saveImageToDocument(fileName: "\(task.objectId)", image: image)
+            }
+        }
+        catch let error {
+            print("메모 저장 실패 \(error)")
         }
     }
     
@@ -77,24 +82,41 @@ struct ShoppingListManager {
         
         removeImageFromDocument(fileName: "\(taskToDelete.objectId)")
         
-        try! localRealm.write {
-            localRealm.delete(taskToDelete)
+        do {
+            try localRealm.write {
+                localRealm.delete(taskToDelete)
+            }
+        }
+        catch let error {
+            print("메모 삭제 실패 \(error)")
         }
     }
     
     
     mutating func finishTapped(index: Int) {
         let taskToUpdate = shoppingList[index]
-        try! localRealm.write {
-            taskToUpdate.isFinish.toggle()
+        
+        do {
+            try localRealm.write {
+                taskToUpdate.isFinish.toggle()
+            }
+        }
+        catch let error {
+            print("메모 업데이트 실패 \(error)")
         }
     }
     
     
     mutating func importantTapped(index: Int) {
         let taskToUpdate = shoppingList[index]
-        try! localRealm.write {
-            taskToUpdate.isImportant.toggle()
+        
+        do {
+            try localRealm.write {
+                taskToUpdate.isImportant.toggle()
+            }
+        }
+        catch let error {
+            print("메모 업데이트 실패 \(error)")
         }
     }
     
