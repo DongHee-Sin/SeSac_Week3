@@ -25,6 +25,7 @@
 		D01E40FB28B7CC98004CA127 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E40FA28B7CC98004CA127 /* URL+Extension.swift */; };
 		D01E40FD28B7CFDE004CA127 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E40FC28B7CFDE004CA127 /* FileManager+Extension.swift */; };
 		D01E938F288549B50030FAD9 /* KakaoSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E938E288549B50030FAD9 /* KakaoSettingModel.swift */; };
+		D025511D28B8DB8600012B56 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = D025511C28B8DB8600012B56 /* FSCalendar */; };
 		D07CB8EE288A3F8B0068F15B /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07CB8ED288A3F8B0068F15B /* TestViewController.swift */; };
 		D086934D28867DD00003FF88 /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D086934C28867DD00003FF88 /* Shopping.storyboard */; };
 		D086934F28867E160003FF88 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086934E28867E160003FF88 /* ShoppingTableViewController.swift */; };
@@ -117,6 +118,7 @@
 				D01197CE28B371C2001E8755 /* RealmSwift in Frameworks */,
 				D01197CC28B371C2001E8755 /* Realm in Frameworks */,
 				D0D186642887AE65002F9474 /* Toast in Frameworks */,
+				D025511D28B8DB8600012B56 /* FSCalendar in Frameworks */,
 				D0D186612887AE4C002F9474 /* Kingfisher in Frameworks */,
 				D0117FAF28B74E2300F057ED /* SnapKit in Frameworks */,
 			);
@@ -355,6 +357,7 @@
 				D0117FAE28B74E2300F057ED /* SnapKit */,
 				D0117FB828B762E400F057ED /* Zip */,
 				D0117FBE28B780AB00F057ED /* JGProgressHUD */,
+				D025511C28B8DB8600012B56 /* FSCalendar */,
 			);
 			productName = SeSac3TrendMedia;
 			productReference = D0DA44D12884DDED00D12714 /* SeSac3TrendMedia.app */;
@@ -391,6 +394,7 @@
 				D0117FAD28B74E2300F057ED /* XCRemoteSwiftPackageReference "SnapKit" */,
 				D0117FB728B762E400F057ED /* XCRemoteSwiftPackageReference "Zip" */,
 				D0117FBD28B780AB00F057ED /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				D025511B28B8DB8600012B56 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = D0DA44D22884DDED00D12714 /* Products */;
 			projectDirPath = "";
@@ -712,6 +716,14 @@
 				kind = branch;
 			};
 		};
+		D025511B28B8DB8600012B56 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		D0D1865F2887AE4C002F9474 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -755,6 +767,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D01197CA28B371C2001E8755 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		D025511C28B8DB8600012B56 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D025511B28B8DB8600012B56 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 		D0D186602887AE4C002F9474 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

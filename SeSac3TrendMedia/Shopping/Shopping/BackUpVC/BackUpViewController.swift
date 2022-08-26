@@ -16,7 +16,11 @@ class BackUpViewController: UIViewController {
     // MARK: - Propertys
     let dateManager = DateFormatterManager()
     
-    lazy var backupList: [URL] = fetchDocumentZipFile() ?? []
+    lazy var backupList: [URL] = fetchDocumentZipFile() ?? [] {
+        didSet {
+            backupView.backupListTableView.reloadData()
+        }
+    }
     
     let hud: JGProgressHUD = {
         let hud = JGProgressHUD(style: .dark)
@@ -131,6 +135,44 @@ extension BackUpViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showAlert(title: "\(backupList[indexPath.row].lastPathComponent) 날짜의 파일로 복구합니다.", button: "확인") { [weak self] _ in
+            guard let self = self else { return }
+            
+            guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                self.showAlert(title: "Document 위치에 오류가 있습니다.")
+                return
+            }
+            let fileURL = path.appendingPathComponent(self.backupList[indexPath.row].lastPathComponent)
+            self.restoreFile(fileURL: fileURL, documentURL: path)
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                showAlert(title: "Document 위치에 오류가 있습니다.")
+                return
+            }
+            let fileURL = path.appendingPathComponent(backupList[indexPath.row].lastPathComponent)
+            
+            do {
+                try FileManager.default.removeItem(at: fileURL)
+                backupList = fetchDocumentZipFile() ?? []
+            }
+            catch {
+                showAlert(title: "압축파일 삭제 실패")
+            }
+        }
+    }
 }
 
 
@@ -162,7 +204,6 @@ extension BackUpViewController {
             let zipFilePath = try Zip.quickZipFiles(urlPaths, fileName: "SeSac\(dateManager.currentDateString)")
             showActivityViewController(filePath: zipFilePath)
             backupList = fetchDocumentZipFile() ?? []
-            backupView.backupListTableView.reloadData()
         }
         catch {
             showAlert(title: "파일 압축에 실패했습니다.")
