@@ -96,10 +96,7 @@ class BackUpViewController: UIViewController {
             
             let zip = docs.filter { $0.pathExtension == "zip" }
             
-            let result = zip.map { path.appendingPathComponent($0.lastPathComponent) }
-            
-            print("result: \(result)")
-            return result
+            return zip
         }
         catch {
             showAlert(title: "Document의 파일 가져오기 실패")
@@ -164,6 +161,8 @@ extension BackUpViewController {
         do {
             let zipFilePath = try Zip.quickZipFiles(urlPaths, fileName: "SeSac\(dateManager.currentDateString)")
             showActivityViewController(filePath: zipFilePath)
+            backupList = fetchDocumentZipFile() ?? []
+            backupView.backupListTableView.reloadData()
         }
         catch {
             showAlert(title: "파일 압축에 실패했습니다.")
