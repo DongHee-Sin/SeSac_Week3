@@ -7,6 +7,7 @@
 
 import UIKit
 import PhotosUI
+import RealmSwift
 
 
 class ShoppingTableViewController: UITableViewController {
@@ -26,6 +27,8 @@ class ShoppingTableViewController: UITableViewController {
     
     var selectedImage: UIImage?
     
+    var notificationToken: NotificationToken?
+    
     
     
     
@@ -35,12 +38,23 @@ class ShoppingTableViewController: UITableViewController {
         
         createImageDirectory()
         initialSetting()
+        
+        setRealmObserver()
     }
 
     
    
     
     // MARK: - Methods
+    func setRealmObserver() {
+        let realm = try! Realm()
+        let results = realm.objects(Shopping.self)
+        notificationToken = results.observe { [weak self] _ in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    
     func createImageDirectory() {
         guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             showAlert(title: "Document 위치에 오류가 있습니다.")
@@ -214,12 +228,10 @@ extension ShoppingTableViewController: ShoppingDataDelegate {
     func addMemo(title: String) {
         shoppingListManager.addMemo(title: title, image: selectedImage)
         selectedImage = nil
-        tableView.reloadData()
     }
     
     func removeMemo(at index: Int) {
         shoppingListManager.removeMemo(at: index)
-        tableView.reloadData()
     }
     
     
@@ -236,12 +248,10 @@ extension ShoppingTableViewController: ShoppingDataDelegate {
 extension ShoppingTableViewController: ButtonActionDelegate {
     func finishButtonTapped(index: Int) {
         shoppingListManager.finishTapped(index: index)
-        tableView.reloadData()
     }
     
     func importantButtonTapped(index: Int) {
         shoppingListManager.importantTapped(index: index)
-        tableView.reloadData()
     }
 }
 
