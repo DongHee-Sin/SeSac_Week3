@@ -15,7 +15,7 @@ class BackUpViewController: UIViewController {
 
     // MARK: - Propertys
     let dateManager = DateFormatterManager()
-    
+
     lazy var backupList: [URL] = fetchDocumentZipFile() ?? [] {
         didSet {
             backupView.backupListTableView.reloadData()
@@ -282,10 +282,8 @@ extension BackUpViewController: UIDocumentPickerDelegate {
                 self?.hud.detailTextLabel.text = "\(progress)% Complete"
             }, fileOutputHandler: { [weak self] unzippedFile in
                 self?.dismissHUD()
-                self?.showAlert(title: "복구가 완료되었습니다.", handler: { _ in
-                    guard let vc = UIStoryboard(name: "Shopping", bundle: nil).instantiateViewController(withIdentifier: "ShoppingTableViewController") as? ShoppingTableViewController else { return }
-                    let navi = UINavigationController(rootViewController: vc)
-                    self?.changeRootViewController(to: navi)
+                self?.showAlert(title: "복구가 완료되었습니다. 앱을 다시 시작해주세요!", handler: { _ in
+                    exit(-1)
                 })
             })
         }
