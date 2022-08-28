@@ -53,19 +53,5 @@ class ShoppingTableViewCell: UITableViewCell {
         titleLabel.text = data.title
         checkMarkButton.setImage(data.isFinish ? UIImage(systemName: "checkmark.square.fill") : UIImage(systemName: "checkmark.square"), for: .normal)
         starButton.setImage(data.isImportant ? UIImage(systemName: "star.fill") : UIImage(systemName: "star"), for: .normal)
-        loadImageFromDocument(fileName: "\(data.objectId)")
-    }
-    
-    
-    func loadImageFromDocument(fileName: String) {
-        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let imageDocumentURL = documentDirectory.appendingPathComponent("image")
-        let fileURL = imageDocumentURL.appendingPathComponent("\(fileName).jpg")
-        
-        if FileManager.default.fileExists(atPath: fileURL.path) {
-            shoppingImageView.image = UIImage(contentsOfFile: fileURL.path)
-        }else {
-            shoppingImageView.image = UIImage(systemName: "star.fill")
-        }
     }
 }

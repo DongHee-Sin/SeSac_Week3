@@ -14,9 +14,10 @@ import Zip
 class BackUpViewController: UIViewController {
 
     // MARK: - Propertys
+    let documentManager = DocumentManager()
     let dateManager = DateFormatterManager()
 
-    lazy var backupList: [URL] = fetchDocumentZipFile() ?? [] {
+    lazy var backupList: [URL] = [] {
         didSet {
             backupView.backupListTableView.reloadData()
         }
@@ -47,6 +48,8 @@ class BackUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backupList = documentManager.fetchDocumentZipFile()
         
         configure()
     }
@@ -88,24 +91,6 @@ class BackUpViewController: UIViewController {
     func dismissHUD() {
         view.isUserInteractionEnabled = true
         hud.dismiss(animated: true)
-    }
-    
-    
-    // Document에 저장된 파일 리스트 확인하기 (확장자로 구분하여 조회 가능)
-    func fetchDocumentZipFile() -> [URL]? {
-        do {
-            guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
-            
-            let docs = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil)
-            
-            let zip = docs.filter { $0.pathExtension == "zip" }
-            
-            return zip
-        }
-        catch {
-            showAlert(title: "Document의 파일 가져오기 실패")
-            return nil
-        }
     }
 }
 
@@ -158,19 +143,8 @@ extension BackUpViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-                showAlert(title: "Document 위치에 오류가 있습니다.")
-                return
-            }
-            let fileURL = path.appendingPathComponent(backupList[indexPath.row].lastPathComponent)
-            
-            do {
-                try FileManager.default.removeItem(at: fileURL)
-                backupList = fetchDocumentZipFile() ?? []
-            }
-            catch {
-                showAlert(title: "압축파일 삭제 실패")
-            }
+            let fileName = backupList[indexPath.row].lastPathComponent
+            documentManager.removeFileFromDocument(fileName: fileName)
         }
     }
 }
@@ -203,7 +177,7 @@ extension BackUpViewController {
         do {
             let zipFilePath = try Zip.quickZipFiles(urlPaths, fileName: "SeSac\(dateManager.currentDateString)")
             showActivityViewController(filePath: zipFilePath)
-            backupList = fetchDocumentZipFile() ?? []
+            backupList = documentManager.fetchDocumentZipFile()
         }
         catch {
             showAlert(title: "파일 압축에 실패했습니다.")

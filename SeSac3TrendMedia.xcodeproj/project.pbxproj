@@ -27,6 +27,7 @@
 		D01E938F288549B50030FAD9 /* KakaoSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E938E288549B50030FAD9 /* KakaoSettingModel.swift */; };
 		D025511D28B8DB8600012B56 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = D025511C28B8DB8600012B56 /* FSCalendar */; };
 		D02B054828B922D20057B559 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02B054728B922D20057B559 /* CalendarViewController.swift */; };
+		D0588E0728BB934800609079 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0588E0628BB934800609079 /* RealmManager.swift */; };
 		D07CB8EE288A3F8B0068F15B /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07CB8ED288A3F8B0068F15B /* TestViewController.swift */; };
 		D086934D28867DD00003FF88 /* Shopping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D086934C28867DD00003FF88 /* Shopping.storyboard */; };
 		D086934F28867E160003FF88 /* ShoppingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D086934E28867E160003FF88 /* ShoppingTableViewController.swift */; };
@@ -59,6 +60,7 @@
 		D0DA44EB2884FE3C00D12714 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA44EA2884FE3C00D12714 /* SettingTableViewController.swift */; };
 		D0DA44ED28850FCE00D12714 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0DA44EC28850FCE00D12714 /* Setting.storyboard */; };
 		D0F7105928B4D63000378D15 /* ShoppingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F7105828B4D63000378D15 /* ShoppingDetailViewController.swift */; };
+		D0F7219A28BBB27100C32E69 /* DocumentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F7219928BBB27100C32E69 /* DocumentManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,7 @@
 		D01E40FC28B7CFDE004CA127 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		D01E938E288549B50030FAD9 /* KakaoSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoSettingModel.swift; sourceTree = "<group>"; };
 		D02B054728B922D20057B559 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		D0588E0628BB934800609079 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		D07CB8ED288A3F8B0068F15B /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		D086934C28867DD00003FF88 /* Shopping.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shopping.storyboard; sourceTree = "<group>"; };
 		D086934E28867E160003FF88 /* ShoppingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 		D0DA44EA2884FE3C00D12714 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.java; };
 		D0DA44EC28850FCE00D12714 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		D0F7105828B4D63000378D15 /* ShoppingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingDetailViewController.swift; sourceTree = "<group>"; };
+		D0F7219928BBB27100C32E69 /* DocumentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				D01197D128B3725A001E8755 /* RealmModel.swift */,
+				D0588E0628BB934800609079 /* RealmManager.swift */,
+				D0F7219928BBB27100C32E69 /* DocumentManager.swift */,
 			);
 			path = "Realm-Database";
 			sourceTree = "<group>";
@@ -451,8 +457,10 @@
 				D08A29042885342F00F65886 /* KakaoSettingTableViewController.swift in Sources */,
 				D0117FB628B75B3900F057ED /* BackUpTableViewCell.swift in Sources */,
 				D0D1865B28879AAF002F9474 /* RecommendCollectionViewController.swift in Sources */,
+				D0F7219A28BBB27100C32E69 /* DocumentManager.swift in Sources */,
 				D01E40FB28B7CC98004CA127 /* URL+Extension.swift in Sources */,
 				D0DA44D92884DDED00D12714 /* ViewController.swift in Sources */,
+				D0588E0728BB934800609079 /* RealmManager.swift in Sources */,
 				D01E40FD28B7CFDE004CA127 /* FileManager+Extension.swift in Sources */,
 				D0D7DC132886478B006A435D /* UITextField+Extension.swift in Sources */,
 				D07CB8EE288A3F8B0068F15B /* TestViewController.swift in Sources */,
